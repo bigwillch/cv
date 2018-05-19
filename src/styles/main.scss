@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 @import "base/base-typography";
 
 // mapping silly markup to partials

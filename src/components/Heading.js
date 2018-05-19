@@ -1,14 +1,14 @@
 import React from 'react'
-const ReactFitText = require('react-fittext');
+import { Textfit } from 'react-textfit';
 
 const Heading = (props) => {
 
   const Tag = `h${props.level}`
 
   return (
-    <ReactFitText>
+    <Textfit {...props.opts} >
       <Tag>{ props.children }</Tag>
-    </ReactFitText>
+    </Textfit>
   )
 };
 export default Heading;
