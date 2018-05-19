@@ -1,8 +1,17 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+$mq-breakpoints: (
+    mobile:  320px,
+    tablet:  740px,
+    desktop: 980px,
+    wide:    1300px
+);
 
+@import "mq";
+
+
+@import "variables/variables-main";
 @import "base/base-typography";
+@import "layout/layout-main";
+
 
 // mapping silly markup to partials
 h1 {
