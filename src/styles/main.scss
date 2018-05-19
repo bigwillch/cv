@@ -1,0 +1,40 @@
+@import "base/base-typography";
+
+// mapping silly markup to partials
+h1 {
+  @import "modules/module-page-title";
+}
+
+blockquote:first-of-type {
+  @import "modules/module-contact-info";
+}
+
+h2:first-of-type + ul {
+  @import "modules/module-skills";
+}
+
+h1, h2, h3 {
+  + p em {
+    @import "modules/module-sub-heading";
+  }
+}
+
+// section
+h2 {
+  @import "modules/module-section-heading";
+}
+
+// subsection
+h3 {
+  @import "modules/subsection/module-subsection-heading";
+  & + p + blockquote,
+  & + blockquote {
+    @import "modules/subsection/module-subsection-info";
+    & em {
+       @import "modules/module-date";
+    }
+    & + ul {
+      @import "modules/subsection/module-subsection-list";
+    }
+  }
+}

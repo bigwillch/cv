@@ -1,0 +1,1 @@
+Playing with mdx to render a cv in react
