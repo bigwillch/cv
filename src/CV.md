@@ -1,8 +1,8 @@
 # Will Howlett
 _fairly good front end developer_
 
-> [email](mailto:email)  
-> [telephone](tel:telephone)  
+> [email](CONTACTEMAIL)  
+> [tel](CONTACTTEL)  
 > [github](https://github.com/bigwillch)  
 > [linkedin](https://www.linkedin.com/in/will-howlett-54804bb0/)
 

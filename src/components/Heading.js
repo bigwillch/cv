@@ -1,7 +1,7 @@
 import React from 'react'
 const ReactFitText = require('react-fittext');
 
-const App = (props) => {
+const Heading = (props) => {
 
   const Tag = `h${props.level}`
 
@@ -11,4 +11,4 @@ const App = (props) => {
     </ReactFitText>
   )
 };
-export default App;
+export default Heading;

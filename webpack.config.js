@@ -1,5 +1,6 @@
-const path = require('path');
+const path = require('path')
 const emoji = require('remark-emoji')
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: path.join(__dirname, "src/index.html"),
@@ -44,7 +45,12 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlWebpackPlugin],
+  plugins: [
+    htmlWebpackPlugin,
+    new webpack.DefinePlugin({
+      'ENV': JSON.stringify(process.env)
+    })
+  ],
   resolve: {
     extensions: [".js", ".jsx"]
   },
