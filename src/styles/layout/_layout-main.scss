@@ -8,11 +8,11 @@ body {
 }
 
 main {
-  padding: $gutter;
+  padding: $gutter 0;
   > div {
     > * {
+      margin: $gutter;
       margin-top: 0;
-      margin-bottom: $gutter;
     }
   }
 }

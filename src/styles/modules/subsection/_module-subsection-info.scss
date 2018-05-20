@@ -9,7 +9,7 @@
     z-index: -1;
     height: $border-width / 2;
     bottom: 0;
-    width: calc(100vw - #{$gutter * 3});
+    width: calc(100vw - #{$gutter * 2});
   }
   p {
     font-weight: bold;

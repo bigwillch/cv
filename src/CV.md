@@ -1,9 +1,9 @@
 # Will Howlett
 _fairly good front end developer_
 
-> [email](CONTACTEMAIL)  
-> [tel](CONTACTTEL)  
-> [github](https://github.com/bigwillch)  
+> [email](CONTACTEMAIL)
+> [tel](CONTACTTEL)
+> [github](https://github.com/bigwillch)
 > [linkedin](https://www.linkedin.com/in/will-howlett-54804bb0/)
 
 ## Skills
@@ -16,7 +16,15 @@ _fairly good front end developer_
   * smacss
 * drupal
   * modules
-  * 
+  * theming
+* architecture
+  * taskrunners
+  * etc
+  * etc
+* teamwork
+  * mentoring
+  * etc
+  * etc
 * other
   * optimize
   * amp
@@ -28,15 +36,18 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
-* Mentoring bla bla bla
-* Implementing bla bla bla
-* Liasing bla bla bla
+* Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+* Gumbo beet greens corn soko endive gumbo gourd
+* Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
+* Brussels sprout coriander water
+* Nori grape silver beet broccoli kombu beet greens
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
-* Loads
-* of
-* stuff
+* Beetroot water spinach okra water
+* Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify
+* Catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce
+* Sea lettuce water spinach gram fava bean leek dandelion silver beet
 
 ### The Gallery Partnership
 _IT services for charities_

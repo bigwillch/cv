@@ -1,25 +1,33 @@
 & {
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-right: 0;
   padding: 0;
   list-style: none;
   font-size: 0.8em;
   line-height: 21px;
   margin-top: -$gutter-half;
+  padding-bottom: $gutter;
+  margin-bottom: -$gutter;
+  & + * {
+    margin-top: $gutter;
+  }
   li {
+    min-width: 80px;
     flex-grow: 1;
     margin: 0 1px;
     > p {
       background: $color-black;
       color: $color-white;
-      padding: 2px 5px;
+      padding: $gutter-small $gutter-quarter;
       margin: 0;
     }
     ul {
       padding: 0;
       list-style: none;
       li {
-        margin: 2px 5px;
+        margin: $gutter-small $gutter-quarter;
       }
     }
   }
