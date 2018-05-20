@@ -2,6 +2,21 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 main {
-  padding: 0 $gutter;
+  padding: $gutter;
+  > div {
+    > * {
+      margin-top: 0;
+      margin-bottom: $gutter;
+    }
+  }
+}
+
+p {
+  margin-top: 0;
 }

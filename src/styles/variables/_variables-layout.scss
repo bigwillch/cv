@@ -1,0 +1,13 @@
+$mq-breakpoints: (
+    mobile:  320px,
+    tablet:  740px,
+    desktop: 980px,
+    wide:    1300px
+);
+
+@import "mq";
+
+$gutter: 20px;
+$gutter-half: $gutter / 2;
+
+$border-width: 4px;

@@ -1,0 +1,25 @@
+& {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8em;
+  margin-top: -$gutter-half;
+  li {
+    flex-grow: 1;
+    margin: 0 1px;
+    > p {
+      background: $color-black;
+      color: $color-white;
+      padding: 2px 5px;
+      margin: 0;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+      li {
+        margin: 2px 5px;
+      }
+    }
+  }
+}
