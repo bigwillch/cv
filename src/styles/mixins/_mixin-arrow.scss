@@ -1,0 +1,12 @@
+@mixin arrow($color: $color-black) {
+  &:before {
+    content: '';
+    display: block;
+    border: 2px solid $color;
+    border-bottom: 0;
+    border-left: 0;
+    width: 6px;
+    height: 6px;
+    transform: rotateZ(45deg);
+  }
+}

@@ -4,17 +4,10 @@
     display: flex;
     align-items: center;
     margin-bottom: $gutter-half;
+    @include arrow;
     &:before {
-      content: '';
-      display: block;
-      border: 2px solid $color-black;
-      border-bottom: 0;
-      border-left: 0;
-      width: 6px;
-      height: 6px;
       margin-right: $gutter;
       margin-left: $gutter-quarter;
-      transform: rotateZ(45deg);
       flex-shrink: 0;
     }
   }

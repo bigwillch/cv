@@ -7,15 +7,25 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientWidth: -1,
-      scrollWidth: -1
+      scrollable: false,
+      scrolled: false,
+      scrolledAmount: 0
     };
   }
 
+  checkScroll = (measure, contentRect) => {
+    measure();
+    this.setState({
+      scrolled: contentRect.scroll.left > 5 ? true : false,
+      scrolledAmount: contentRect.scroll.left / (contentRect.client.width / 100)
+    }) 
+  }
+
   render() {
-    const { clientWidth, scrollWidth } = this.state
+    // const scrollable = this.state.clientWidth < this.state.scrollWidth ? true : false
     const className = classNames(
-      (clientWidth < scrollWidth) && 'scrollable'
+      this.state.scrollable && 'scrollable',
+      this.state.scrolled && 'scrolled'
     )
 
     return (
@@ -23,18 +33,24 @@ export default class List extends React.Component {
         client
         scroll
         onResize={(contentRect) => {
-          this.setState({ 
-            clientWidth: contentRect.client.width,
-            scrollWidth: contentRect.scroll.width
+          this.setState({
+            scrollable: contentRect.client.width < contentRect.scroll.width ? true : false,
           })
         }}
       >
-        {({ measureRef }) =>
-
-          <ul ref={measureRef} className={className}>
-            {this.props.children}
-          </ul>
-
+        {({ measure, measureRef, contentRect }) =>
+          <React.Fragment>
+            <ul 
+              ref={measureRef} 
+              className={className}
+              onScroll={(e) => this.checkScroll(measure, contentRect)}
+            >
+              {this.props.children}
+            </ul>
+            { this.state.scrollable &&
+              <span>scroll me</span>
+            }
+          </React.Fragment>
         }
       </Measure>
     )

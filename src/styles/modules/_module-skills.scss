@@ -8,15 +8,14 @@
   font-size: 0.8em;
   line-height: 21px;
   margin-top: -$gutter-half;
-  padding-bottom: $gutter;
-  margin-bottom: -$gutter;
-  & + * {
-    margin-top: $gutter;
-  }
-  li {
+  padding-bottom: $gutter + $gutter-half;
+  margin-bottom: -$gutter-half;
+  position: relative;
+  > li {
     min-width: 80px;
     flex-grow: 1;
     margin: 0 1px;
+    background: $color-lightgrey;
     > p {
       background: $color-black;
       color: $color-white;
@@ -27,8 +26,35 @@
       padding: 0;
       list-style: none;
       li {
-        margin: $gutter-small $gutter-quarter;
+        padding: $gutter-small $gutter-quarter;
+        &:last-child {
+          padding-bottom: $gutter-half;
+        }
       }
+    }
+  }
+  &:not(.scrollable) {
+    padding-right: $gutter;
+  }
+  &.scrollable {
+    //scroll arrow
+    & + span {
+      @include arrow($color: $color-link);
+      color: $color-link;
+      float: right;
+      margin-top: -$gutter;
+      font-size: 0.8em;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      opacity: 1;
+      transition: 0.6s opacity;
+      &:before {
+        margin-left: $gutter-quarter;
+      }
+    }
+    &.scrolled + span {
+      opacity: 0;
     }
   }
 }
