@@ -1,0 +1,20 @@
+& {
+  position: relative;
+  margin-left: $gutter * 2;
+  margin-right: 0;
+  &:before {
+    content: '';
+    background: $color-border;
+    position: absolute;
+    z-index: -1;
+    height: $border-width / 2;
+    bottom: 0;
+    width: calc(100vw - #{$gutter});
+  }
+  p {
+    font-weight: bold;
+  }
+  em {
+    font-weight: normal;
+  }
+}

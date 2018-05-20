@@ -37,8 +37,7 @@ main > div {
   // subsection
   h3 {
     @import "modules/subsection/module-subsection-heading";
-    & + p + blockquote,
-    & + blockquote {
+    & ~ blockquote {
       @import "modules/subsection/module-subsection-info";
       & em {
         @import "modules/module-date";
