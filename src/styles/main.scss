@@ -8,6 +8,7 @@
 
 body {
   background: $color-white;
+  opacity: 1;
 }
 
 main > div {
@@ -47,5 +48,9 @@ main > div {
         @import "modules/subsection/module-subsection-list";
       }
     }
+  }
+  // extracurricular
+  pre {
+    @import "modules/module-extracurricular";
   }
 }

@@ -102,5 +102,5 @@ _Online regional news_
 ## Extracurricular
 
 ```
-punk / comics / code
+punk / comics / code / punk / comics / code / punk / comics / code
 ```
