@@ -1,0 +1,9 @@
+& {
+  font-size: 0.8em;
+  overflow: hidden;
+  background: $color-lightgrey;
+  padding-top: $gutter;
+  p:not(:last-child) {
+    margin-bottom: $gutter-half;
+  }
+}

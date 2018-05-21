@@ -53,4 +53,8 @@ main > div {
   pre {
     @import "modules/module-extracurricular";
   }
+  // footer
+  &:last-child {
+    @import "modules/module-footer";
+  }
 }

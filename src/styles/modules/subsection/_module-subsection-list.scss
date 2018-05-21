@@ -1,5 +1,6 @@
 & {
   list-style: none;
+  margin-left: $gutter + $gutter-half;
   li {
     display: flex;
     align-items: center;

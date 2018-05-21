@@ -75,7 +75,7 @@ _Educational documentary filmmakers_
 ### ITV Local
 _Online regional news_
 
-> User Generated Content Operative *(Nov 2007 - Mar 2009)*
+> UGC Operative *(Nov 2007 - Mar 2009)*
 
 * Moderation
 
