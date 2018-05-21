@@ -46,6 +46,12 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      Containers: path.resolve(__dirname, '../src/components/containers'),
+      Presentational: path.resolve(__dirname, '../src/components/presentational')
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(['../dist']),
     new HtmlWebpackPlugin({

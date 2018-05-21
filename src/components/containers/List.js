@@ -1,5 +1,6 @@
 import React from 'react'
 import Measure from 'react-measure'
+import debounce from 'debounce'
 import classNames from 'classnames'
 
 export default class List extends React.Component {
@@ -14,10 +15,10 @@ export default class List extends React.Component {
   }
 
   checkScroll = (measure, contentRect) => {
-    measure();
+    console.log('check')
+    measure()
     this.setState({
-      scrolled: contentRect.scroll.left > 5 ? true : false,
-      scrolledAmount: contentRect.scroll.left / (contentRect.client.width / 100)
+      scrolled: contentRect.scroll.left > ((contentRect.scroll.width - contentRect.client.width) / 2) ? true : false
     }) 
   }
 
@@ -43,7 +44,7 @@ export default class List extends React.Component {
             <ul 
               ref={measureRef} 
               className={className}
-              onScroll={(e) => this.checkScroll(measure, contentRect)}
+              onScroll={this.state.scrollable ? (e) => debounce(this.checkScroll(measure, contentRect)) : null }
             >
               {this.props.children}
             </ul>

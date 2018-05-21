@@ -1,8 +1,7 @@
 import React from 'react'
-import Debounce from 'debounce'
 import CV from './CV.md'
-import Link from './components/Link.js'
-import List from './components/List.js'
+import Link from 'Presentational/Link.js'
+import List from 'Containers/List.js'
 import styles from './styles/main.scss'
 
 const App = () => (

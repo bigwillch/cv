@@ -1,5 +1,5 @@
-@mixin arrow($color: $color-black) {
-  &:before {
+@mixin arrow($color: $color-black, $position: before) {
+  &:#{$position} {
     content: '';
     display: block;
     border: 2px solid $color;
