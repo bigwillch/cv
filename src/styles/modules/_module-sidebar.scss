@@ -1,11 +1,11 @@
 & {
   @include mq($from: tablet) {
     position: relative;
+    z-index: 1;
     padding-right: $sidebar-width;
     // sticky contact block
     blockquote:first-of-type {
       position: sticky;
-      z-index: 1;
       top: 0;
       margin-right: -$sidebar-width;
       margin-top: -20px;
@@ -16,6 +16,7 @@
     &:after {
       content: '';
       position: absolute;
+      z-index: -1;
       top: 0;
       bottom: 0;
       width: $sidebar-width - ($gutter * 2);
@@ -27,7 +28,7 @@
       background-size: 2px 2px;
     }
     &:after {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, $color-white 80%);
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, $color-white 80%);
     }
   }
 }
