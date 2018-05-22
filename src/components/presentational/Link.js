@@ -12,7 +12,7 @@ const Link = (props) => {
       const componentProps = {};
       componentProps[props.children] = ENV[props.href]
       return (
-        <Obfuscate { ...componentProps } />
+        <Obfuscate className={ props.children } { ...componentProps } />
       )
   default:
     return (

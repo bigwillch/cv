@@ -1,6 +1,9 @@
 & {
   font-size: 8vw;
   position: relative;
+  @include mq($from: desktop) {
+    font-size: 77px;
+  }
   &:before {
     content: '';
     background: $color-border;

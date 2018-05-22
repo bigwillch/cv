@@ -5,7 +5,7 @@
     transition: 0.2s color;
     position: relative;
     white-space: nowrap;
-    &:after {
+    &:before {
       content: '';
       background-color: $link;
       position: absolute;
@@ -20,7 +20,7 @@
     }
     &:hover, &:active, &:focus {
       color: $hover;
-      &:after {
+      &:before {
         left: 0;
         background-color: $hover;
       }

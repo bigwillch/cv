@@ -9,5 +9,29 @@
     padding: $gutter-small 0;
     float: right;
     clear: both;
+    display: flex;
+    align-items: center;
+    &:after {
+      font-family: 'fontello';
+      font-size: 0.8em;
+      margin-left: $gutter-quarter;
+      min-width: 12px;
+      text-align: center;
+    }
+    &.email:after {
+      content: '\E801';
+    }
+    &.tel:after {
+      content: '\E800';
+    }
+    &[href*=github]:after {
+      content: '\F113';
+    }
+    &[href*=linkedin]:after {
+      content: '\F30C';
+    }
+    &[href=obfuscated] {
+      flex-direction: row-reverse;
+    }
   }
 }
