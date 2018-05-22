@@ -1,6 +1,8 @@
 & {
-  padding-top: $gutter-half;
-  padding-bottom: $gutter;
+  padding-top: $gutter + $gutter-half;
+  padding-bottom: $gutter * 2;
+  margin-top: -$gutter;
+  overflow: hidden;
   code {
     display: block;
     color: $color-white;
@@ -16,10 +18,10 @@
       content: '';
       position: absolute;
       z-index: -1;
-      top: -$gutter-quarter;
-      left: -50%;
-      right: -50%;
-      bottom: -$gutter-half - $gutter-quarter;
+      top: -$gutter-half;
+      left: -50vw;
+      right: -50vw;
+      bottom: -$gutter;
       transform: rotateZ(-2deg);
     }
     &:before {
@@ -29,8 +31,8 @@
       background-image: radial-gradient($color-black 33%, transparent 33%);
       background-size: 4px 4px;
       transform: rotateZ(-1deg);
-      top: -$gutter-half;
-      bottom: -18px;
+      top: -40%;
+      bottom: -70%;
     }
   }
 }

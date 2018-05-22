@@ -10,6 +10,6 @@
     position: absolute;
     height: $border-width;
     bottom: 0;
-    width: calc(100vw - #{$gutter});
+    width: calc(100% - #{$gutter});
   }
 }

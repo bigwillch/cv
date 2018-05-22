@@ -1,0 +1,33 @@
+& {
+  @include mq($from: tablet) {
+    position: relative;
+    padding-right: $sidebar-width;
+    // sticky contact block
+    blockquote:first-of-type {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      margin-right: -$sidebar-width;
+      margin-top: -20px;
+      border-top: solid 20px #fff;
+    }
+    // sidebar gradient
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: $sidebar-width - ($gutter * 2);
+      right: $gutter;
+      pointer-events: none;
+    }
+    &:before {
+      background-image: radial-gradient($color-lightgrey 33%, transparent 33%);
+      background-size: 2px 2px;
+    }
+    &:after {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, $color-white 80%);
+    }
+  }
+}

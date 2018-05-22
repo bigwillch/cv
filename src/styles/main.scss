@@ -59,6 +59,10 @@ main > div {
   pre {
     @import "modules/module-extracurricular";
   }
+  // sidebar
+  &:first-child {
+    @import "modules/module-sidebar.scss";
+  }
   // footer
   &:last-child {
     @import "modules/module-footer";
