@@ -16,7 +16,7 @@ const Link = (props) => {
       )
   default:
     return (
-      <a href={ props.href }>{ props.children }</a>
+      <a href={ props.href } target="_blank">{ props.children }</a>
     )
   }
 
