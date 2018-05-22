@@ -1,12 +1,16 @@
 & {
+  padding-top: $gutter-half;
   padding-bottom: $gutter;
   code {
     display: block;
     color: $color-white;
     position: relative;
+    z-index: 1;
     padding-top: $gutter-half;
     white-space: normal;
     text-align: center;
+    max-width: 500px;
+    margin: auto;
     &:before,
     &:after {
       content: '';

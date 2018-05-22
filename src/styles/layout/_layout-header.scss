@@ -1,0 +1,15 @@
+  h1 {
+    display: inline-block;
+    padding-bottom: 20px;
+    & + p {
+      position: absolute;
+      margin-top: -20px;
+    }
+  }
+
+  blockquote:first-of-type {
+    float: right;
+    & + * {
+      clear: both;
+    }
+  }

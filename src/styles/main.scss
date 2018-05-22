@@ -5,10 +5,16 @@
 @import "base/base-typography";
 @import "base/base-link";
 @import "layout/layout-main";
+@import "layout/layout-header";
 
 body {
-  background: $color-white;
+  background: $color-primary;
   opacity: 1;
+}
+
+main {
+  box-shadow: 0 0 20px #888;
+  background: $color-white;
 }
 
 main > div {

@@ -9,6 +9,9 @@ html, body {
 
 main {
   padding-top: $gutter;
+  max-width: 960px;
+  margin: auto;
+  overflow: hidden;
   > div {
     > * {
       padding-left: $gutter;
