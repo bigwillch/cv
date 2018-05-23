@@ -1,8 +1,8 @@
 & {
   font-size: 8vw;
   position: relative;
-  @include mq($from: desktop) {
-    font-size: 77px;
+  @include mq($from: 500px) {
+    font-size: 40px;
   }
   &:before {
     content: '';

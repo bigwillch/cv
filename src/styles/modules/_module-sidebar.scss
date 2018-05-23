@@ -1,5 +1,10 @@
 & {
+  padding-right: 0;
+  transition: 0.4s padding-right;
   @include mq($from: tablet) {
+    & > * {
+      padding-right: 0;
+    }
     position: relative;
     z-index: 1;
     padding-right: $sidebar-width;
@@ -10,6 +15,12 @@
       margin-right: -$sidebar-width;
       margin-top: -20px;
       border-top: solid 20px #fff;
+      padding-right: $gutter;
+    }
+    // extracurriculear
+    pre {
+      padding-left: 0;
+      margin-left: $gutter;
     }
     // sidebar gradient
     &:before,
