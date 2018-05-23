@@ -1,6 +1,5 @@
 & {
   padding-right: 0;
-  transition: 0.4s padding-right;
   @include mq($from: tablet) {
     & > * {
       padding-right: 0;
