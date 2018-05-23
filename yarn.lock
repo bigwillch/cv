@@ -6096,6 +6096,13 @@ resolve@^1.1.6:
   dependencies:
     path-parse "^1.0.5"
 
+resource-hints-webpack-plugin@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/resource-hints-webpack-plugin/-/resource-hints-webpack-plugin-0.0.2.tgz#233cea158af85ef360a934a03284c46d908b7f73"
+  dependencies:
+    minimatch "^3.0.4"
+    object-assign "^4.1.1"
+
 responselike@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/responselike/-/responselike-1.0.2.tgz#918720ef3b631c5642be068f15ade5a46f4ba1e7"
@@ -6210,6 +6217,12 @@ schema-utils@^0.4.4, schema-utils@^0.4.5:
 scoped-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/scoped-regex/-/scoped-regex-1.0.0.tgz#a346bb1acd4207ae70bd7c0c7ca9e566b6baddb8"
+
+script-ext-html-webpack-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/script-ext-html-webpack-plugin/-/script-ext-html-webpack-plugin-2.0.1.tgz#90ac3d77f1892ad9054c3752f0e4673607f6d9a3"
+  dependencies:
+    debug "^3.1.0"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

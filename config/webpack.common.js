@@ -1,8 +1,10 @@
 const path = require('path');
 const emoji = require('remark-emoji')
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, "../src/index.js"),
@@ -73,6 +75,10 @@ module.exports = {
       inject: 'body'
       // filename: "./index.html"
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'
+    }),
+    new ResourceHintWebpackPlugin(),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(process.env)
     })
