@@ -16,7 +16,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [{
-          loader: "style-loader"
+          loader: "style-loader", options: {
+            insertInto: 'body'
+          }
         }, {
           loader: "css-loader", options: {
             sourceMap: true
@@ -63,9 +65,12 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin(['../dist']),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname, '..')
+    }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src/index.html")
+      template: path.join(__dirname, "../src/index.html"),
+      inject: 'body'
       // filename: "./index.html"
     }),
     new webpack.DefinePlugin({
