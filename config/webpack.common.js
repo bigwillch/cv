@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, "../src/index.js"),
@@ -80,7 +79,6 @@ module.exports = {
       defaultAttribute: 'defer'
     }),
     new ResourceHintWebpackPlugin(),
-    new FaviconsWebpackPlugin(path.resolve(__dirname, '../src/favicon.png')),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(process.env)
     })
