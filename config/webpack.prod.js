@@ -1,8 +1,10 @@
+const path = require('path');
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
-const workboxPlugin = require('workbox-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
@@ -10,6 +12,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
+    new FaviconsWebpackPlugin(path.resolve(__dirname, '../src/favicon.png')),
     new UglifyJSPlugin(),
     new CompressionPlugin(),
     new workboxPlugin.GenerateSW({
