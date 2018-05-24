@@ -14,7 +14,11 @@ const App = () => (
         ul: List
       }}
     />
-    <Readme />
+    <Readme 
+      components={{
+        a: Link
+      }}
+    />
   </React.Fragment>
 )
 
