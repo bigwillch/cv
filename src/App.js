@@ -5,7 +5,7 @@ import { sideLoad } from 'Redux/actions/sideloader'
 import CV from './CV.md'
 import Readme from '../README.md'
 
-import List from 'Containers/List.js'
+import List from 'Presentational/List.js'
 import Link from 'Presentational/Link.js'
 
 import fontello from './fonts/fontello/config.scss'
