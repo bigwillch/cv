@@ -3,8 +3,9 @@ export const SIDE_CLEAR = 'SIDE_CLEAR';
 
 // Action creators
 export const sideLoad = (href) => {
+  console.log('sideload', href)
   return {
-    type: SIDEBAR_LOAD,
+    type: SIDE_LOAD,
     payload: {
       href
     }
@@ -29,6 +30,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SIDE_LOAD:
     case SIDE_CLEAR:
+      console.log(action)
       return { ...state, href: action.payload.href }
     default:
       return state

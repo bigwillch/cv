@@ -1,5 +1,6 @@
 import React from 'react'
 import Obfuscate from 'react-obfuscate'
+import classNames from 'classnames'
 
 const Link = (props) => {
 
@@ -16,8 +17,26 @@ const Link = (props) => {
       )
   }
 
+  // check href to check for preview hashtag
+  const href = props.href.split('#')
+  
+  const className = classNames(
+    href[1] === 'preview' && 'sideload'
+  )
+
   return (
-    <a href={ props.href } target="_blank">{ props.children }</a>
+    <a 
+      href={ href[0] }
+      // if preview hashtag present trigger sideload action
+      onClick={href[1] === 'preview' ? (e) => {
+        e.preventDefault()
+        props.triggerSideload(href[0])
+      } : null } 
+      className={className}
+      target="_blank"
+    >
+      { props.children }
+    </a>
   )
 
 };
