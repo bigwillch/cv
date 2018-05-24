@@ -14,11 +14,11 @@ const Link = (props) => {
       return (
         <Obfuscate className={ props.children } { ...componentProps } />
       )
-  default:
-    return (
-      <a href={ props.href } target="_blank">{ props.children }</a>
-    )
   }
+
+  return (
+    <a href={ props.href } target="_blank">{ props.children }</a>
+  )
 
 };
 export default Link;

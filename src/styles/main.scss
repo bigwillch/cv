@@ -7,17 +7,17 @@
 @import "layout/layout-main";
 @import "layout/layout-header";
 
-body {
-  background: $color-primary;
-  opacity: 1;
-}
-
-main {
-  box-shadow: 0 0 20px #888;
-  background: $color-white;
-}
+/* added inline in index.html */
+// body {
+//   background: $color-primary;
+// }
+// main {
+//   box-shadow: 0 0 20px #888;
+//   background: $color-white;
+// }
 
 main > div {
+  opacity: 1;
   // mapping silly markup to partials
   h1 {
     @import "modules/module-page-title";

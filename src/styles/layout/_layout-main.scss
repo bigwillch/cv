@@ -2,15 +2,17 @@
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-}
+/* added inline in index.html */
+// html, body {
+//   margin: 0;
+// }
 
 main {
+  /* added inline in index.html */
+  // max-width: 960px;
+  // margin: auto;
+  // display: block;
   padding-top: $gutter;
-  max-width: 960px;
-  margin: auto;
-  display: block;
   > div {
     > * {
       padding-left: $gutter;
