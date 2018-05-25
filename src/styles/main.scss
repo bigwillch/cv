@@ -4,6 +4,7 @@
 @import "mixins/mixin-link";
 @import "base/base-typography";
 @import "base/base-link";
+@import "base/base-button";
 @import "layout/layout-main";
 @import "layout/layout-header";
 @import "layout/layout-sideloader";
@@ -68,6 +69,11 @@ main {
     // footer
     &:last-child {
       @import "modules/module-footer";
+    }
+  }
+  > aside {
+    nav {
+      @import "modules/module-sideloader-nav"
     }
   }
 }

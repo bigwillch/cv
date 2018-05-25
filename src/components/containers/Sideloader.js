@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { sideLoaded, sideClose } from 'Redux/actions/sideloader'
 
+import Nav from 'Presentational/SideloaderNav.js'
+
 import classNames from 'classnames'
 
 const mapStateToProps = (state) => {
@@ -30,7 +32,7 @@ let Sideloader = (props) => {
           src={props.src}
           onLoad={props.sideLoaded}
         ></iframe>
-        <div role="button" tabindex="0" onClick={props.sideClose}>Back</div>
+        <Nav sideClose={props.sideClose}/>
       </React.Fragment>
       }
     </React.Fragment>

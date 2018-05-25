@@ -9,16 +9,11 @@ main {
     transition: 0.4s right;
     iframe {
       width: 100%;
-      height: 100%;
+      height: calc(100% - #{$sideloader-nav-height});
+      border: none;
     }
-    div[role="button"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: pink;
-      padding: 20px;
-      cursor: pointer;
-      outline: none;
+    nav {
+      height: $sideloader-nav-height;
     }
   }
   
