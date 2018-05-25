@@ -1,5 +1,4 @@
 window.onload = function () {
-  console.log('yo')
   var document = window.document;
   var menuWrapper, headerWrapper, headerSocial, menu, leafs, multiLine, linksWidth = 0, headerElementsSize = 0, socialSize = 0;
 
