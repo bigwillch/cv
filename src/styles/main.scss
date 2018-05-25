@@ -6,6 +6,7 @@
 @import "base/base-link";
 @import "layout/layout-main";
 @import "layout/layout-header";
+@import "layout/layout-sideloader";
 
 /* added inline in index.html */
 // body {
@@ -16,55 +17,57 @@
 //   background: $color-white;
 // }
 
-main > div {
-  opacity: 1;
-  // mapping silly markup to partials
-  h1 {
-    @import "modules/module-page-title";
-  }
-
-  blockquote:first-of-type {
-    @import "modules/module-contact-info";
-  }
-
-  h2:first-of-type + ul {
-    @import "modules/module-skills";
-  }
-
-  h1, h2, h3 {
-    + p em {
-      @import "modules/module-sub-heading";
+main {
+  > section > div {
+    opacity: 1;
+    // mapping silly markup to partials
+    h1 {
+      @import "modules/module-page-title";
     }
-  }
 
-  // section
-  h2 {
-    @import "modules/module-section-heading";
-  }
+    blockquote:first-of-type {
+      @import "modules/module-contact-info";
+    }
 
-  // subsection
-  h3 {
-    @import "modules/subsection/module-subsection-heading";
-    & ~ blockquote {
-      @import "modules/subsection/module-subsection-info";
-      & em {
-        @import "modules/module-date";
-      }
-      & + ul {
-        @import "modules/subsection/module-subsection-list";
+    h2:first-of-type + ul {
+      @import "modules/module-skills";
+    }
+
+    h1, h2, h3 {
+      + p em {
+        @import "modules/module-sub-heading";
       }
     }
-  }
-  // extracurricular
-  pre {
-    @import "modules/module-extracurricular";
-  }
-  // sidebar
-  &:first-child {
-    @import "modules/module-sidebar.scss";
-  }
-  // footer
-  &:last-child {
-    @import "modules/module-footer";
+
+    // section
+    h2 {
+      @import "modules/module-section-heading";
+    }
+
+    // subsection
+    h3 {
+      @import "modules/subsection/module-subsection-heading";
+      & ~ blockquote {
+        @import "modules/subsection/module-subsection-info";
+        & em {
+          @import "modules/module-date";
+        }
+        & + ul {
+          @import "modules/subsection/module-subsection-list";
+        }
+      }
+    }
+    // extracurricular
+    pre {
+      @import "modules/module-extracurricular";
+    }
+    // sidebar
+    &:first-child {
+      @import "modules/module-sidebar.scss";
+    }
+    // footer
+    &:last-child {
+      @import "modules/module-footer";
+    }
   }
 }

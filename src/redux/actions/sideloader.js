@@ -1,14 +1,20 @@
-export const SIDE_LOAD = 'SIDE_LOAD';
+export const SIDE_TRIGGER = 'SIDE_TRIGGER';
+export const SIDE_LOADED = 'SIDE_LOADED';
 export const SIDE_CLEAR = 'SIDE_CLEAR';
 
 // Action creators
-export const sideLoad = (href) => {
-  console.log('sideload', href)
+export const sideTrigger = (href) => {
   return {
-    type: SIDE_LOAD,
+    type: SIDE_TRIGGER,
     payload: {
       href
     }
+  }
+}
+
+export const sideLoaded = () => {
+  return {
+    type: SIDE_LOADED
   }
 }
 
@@ -22,16 +28,19 @@ export const sideClear = () => {
 }
 
 const initialState = {
-  href: null
+  href: null,
+  loading: false
 }
 
 // Reducers
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SIDE_LOAD:
+    case SIDE_TRIGGER:
+      return { ...state, href: action.payload.href, loading: true }
+    case SIDE_LOADED:
+      return { ...state, loading: false }
     case SIDE_CLEAR:
-      console.log(action)
-      return { ...state, href: action.payload.href }
+      return { ...state, href: null }
     default:
       return state
   }

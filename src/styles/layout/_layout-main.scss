@@ -7,7 +7,7 @@
 //   margin: 0;
 // }
 
-main {
+main > section {
   /* added inline in index.html */
   // max-width: 960px;
   // margin: auto;
@@ -23,6 +23,7 @@ main {
   }
 }
 
-p {
-  margin-top: 0;
-}
+/* added inline in index.html */
+// p {
+//   margin-top: 0;
+// }

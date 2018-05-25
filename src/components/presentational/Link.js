@@ -30,7 +30,7 @@ const Link = (props) => {
       // if preview hashtag present trigger sideload action
       onClick={href[1] === 'preview' ? (e) => {
         e.preventDefault()
-        props.triggerSideload(href[0])
+        props.sideTrigger(href[0])
       } : null } 
       className={className}
       target="_blank"

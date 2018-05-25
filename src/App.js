@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { sideLoad } from 'Redux/actions/sideloader'
+import { sideTrigger, sideLoaded } from 'Redux/actions/sideloader'
+
+import classNames from 'classnames'
 
 import CV from './CV.md'
 import Readme from '../README.md'
@@ -15,13 +17,17 @@ import styles from './styles/main.scss'
 
 const mapStateToProps = (state) => {
   return {
-    sideloaderSrc: state.sideloader.href
+    sideloaderSrc: state.sideloader.href,
+    sidebarLoading: state.sideloader.loading
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    triggerSideload: (href) => {
-      dispatch(sideLoad(href))
+    sideTrigger: (href) => {
+      dispatch(sideTrigger(href))
+    },
+    sideLoaded: () => {
+      dispatch(sideLoaded())
     }
   }
 }
@@ -34,22 +40,34 @@ class App extends React.Component {
   
   render() {
     
-    const a = props => <Link {...props} triggerSideload={this.props.triggerSideload} />
+    const a = props => <Link {...props} sideTrigger={this.props.sideTrigger} />
+
+    const className = classNames(
+      this.props.sidebarLoading && 'sideloader-loading',
+      (this.props.sideloaderSrc && !this.props.sidebarLoading) && 'sideloader-active'
+    )
 
     return (
       <React.Fragment>
-        <CV
-          components={{
-            a,
-            ul: List
-          }}
-        />
-        <Readme 
-          components={{
-            a
-          }}
-        />
-        <Sideloader src={this.props.sideloaderSrc} />
+        <section className={className}>
+          <CV
+            components={{
+              a,
+              ul: List
+            }}
+          />
+          <Readme 
+            components={{
+              a
+            }}
+          />
+        </section>
+        <aside>
+          <Sideloader 
+            src={this.props.sideloaderSrc}
+            sideLoaded={this.props.sideLoaded}
+          />
+        </aside>
       </React.Fragment>
     )
   }
