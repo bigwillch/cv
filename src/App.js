@@ -7,6 +7,7 @@ import Readme from '../README.md'
 
 import List from 'Presentational/List.js'
 import Link from 'Presentational/Link.js'
+import Sideloader from 'Presentational/Sideloader.js'
 
 import fontello from './fonts/fontello/config.scss'
 import styles from './styles/main.scss'
@@ -14,6 +15,7 @@ import styles from './styles/main.scss'
 
 const mapStateToProps = (state) => {
   return {
+    sideloaderSrc: state.sideloader.href
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -47,6 +49,7 @@ class App extends React.Component {
             a
           }}
         />
+        <Sideloader src={this.props.sideloaderSrc} />
       </React.Fragment>
     )
   }

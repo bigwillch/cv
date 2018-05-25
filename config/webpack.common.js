@@ -5,6 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   entry: path.join(__dirname, "../src/index.js"),
@@ -82,7 +84,11 @@ module.exports = {
     new ResourceHintWebpackPlugin(),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(process.env)
-    })
+    }),
+    new CopyWebpackPlugin([{ 
+      from: path.join(__dirname, '../src/examples'),
+      to: 'examples' 
+    }])
   ],
   output: {
     filename: '[name].bundle.js',

@@ -38,6 +38,6 @@ const Link = (props) => {
       { props.children }
     </a>
   )
+}
 
-};
 export default Link;
