@@ -7,9 +7,9 @@ import classNames from 'classnames'
 import CV from './CV.md'
 import Readme from '../README.md'
 
-import List from 'Presentational/List.js'
-import Link from 'Presentational/Link.js'
-import Sideloader from 'Presentational/Sideloader.js'
+import List from 'Containers/List.js'
+import Link from 'Containers/Link.js'
+import Sideloader from 'Containers/Sideloader.js'
 
 import fontello from './fonts/fontello/config.scss'
 import styles from './styles/main.scss'
