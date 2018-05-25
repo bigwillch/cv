@@ -11,6 +11,8 @@ main {
       width: 100%;
       height: calc(100% - #{$sideloader-nav-height});
       border: none;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
     nav {
       height: $sideloader-nav-height;
