@@ -3,17 +3,16 @@ import classNames from 'classnames'
 
 const Sideloader = (props) => {
 
-  const onLoadHandler = (e) => {
-    props.sideLoaded();
-  }
-
   return (
     <React.Fragment>
       { props.src &&
+        <React.Fragment>
         <iframe 
           src={props.src}
-          onLoad={onLoadHandler}
+          onLoad={props.sideLoaded}
         ></iframe>
+        <div role="button" tabindex="0" onClick={props.sideClose}>Back</div>
+      </React.Fragment>
       }
     </React.Fragment>
   )
