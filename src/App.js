@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { sideTrigger, sideLoaded, sideClose } from 'Redux/actions/sideloader'
+import { sideTrigger } from 'Redux/actions/sideloader'
 
 import classNames from 'classnames'
 
@@ -17,22 +17,8 @@ import styles from './styles/main.scss'
 
 const mapStateToProps = (state) => {
   return {
-    sideloaderSrc: state.sideloader.href,
     sidebarLoading: state.sideloader.loading,
     sidebarActive: state.sideloader.active
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sideTrigger: (href) => {
-      dispatch(sideTrigger(href))
-    },
-    sideLoaded: () => {
-      dispatch(sideLoaded())
-    },
-    sideClose: () => {
-      dispatch(sideClose())
-    }
   }
 }
 
@@ -44,8 +30,6 @@ class App extends React.Component {
   
   render() {
     
-    const a = props => <Link {...props} sideTrigger={this.props.sideTrigger} />
-
     const className = classNames(
       this.props.sidebarLoading && 'sideloader-loading',
       this.props.sidebarActive && 'sideloader-active'
@@ -56,22 +40,18 @@ class App extends React.Component {
         <section className={className}>
           <CV
             components={{
-              a,
+              a: Link,
               ul: List
             }}
           />
           <Readme 
             components={{
-              a
+              a: Link
             }}
           />
         </section>
         <aside>
-          <Sideloader 
-            src={this.props.sideloaderSrc}
-            sideLoaded={this.props.sideLoaded}
-            sideClose={this.props.sideClose}
-          />
+          <Sideloader />
         </aside>
       </React.Fragment>
     )
@@ -79,6 +59,5 @@ class App extends React.Component {
 }
 
 export default App = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(App)

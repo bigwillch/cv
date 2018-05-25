@@ -1,8 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { sideTrigger } from 'Redux/actions/sideloader'
+
 import Obfuscate from 'react-obfuscate'
 import classNames from 'classnames'
 
-const Link = (props) => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sideTrigger: (href) => {
+      dispatch(sideTrigger(href))
+    }
+  }
+}
+
+let Link = (props) => {
 
   switch (props.children) {
     case 'email':
@@ -40,4 +51,7 @@ const Link = (props) => {
   )
 }
 
-export default Link;
+export default Link = connect(
+  null,
+  mapDispatchToProps
+)(Link)
