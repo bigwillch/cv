@@ -1,11 +1,10 @@
-@mixin link ($link, $hover) {
+@mixin link($link, $hover) {
   & {
     color: $link;
     text-decoration: none;
-    transition: 0.2s color;
     position: relative;
     white-space: nowrap;
-    &:before {
+    &:not(.button):before {
       content: '';
       background-color: $link;
       position: absolute;
@@ -22,6 +21,24 @@
       color: $hover;
       &:before {
         left: 0;
+        background-color: $hover;
+      }
+    }
+  }
+}
+
+@mixin linkSetColor($link, $hover) {
+  & {
+    color: $link;
+    &:before {
+      background-color: $link;
+    }
+    &:visited {
+      color: $link;
+    }
+    &:hover, &:active, &:focus {
+      color: $hover;
+      &:before {
         background-color: $hover;
       }
     }

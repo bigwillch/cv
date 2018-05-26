@@ -5,6 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   entry: path.join(__dirname, "../src/index.js"),
@@ -63,7 +65,10 @@ module.exports = {
   resolve: {
     alias: {
       Containers: path.resolve(__dirname, '../src/components/containers'),
-      Presentational: path.resolve(__dirname, '../src/components/presentational')
+      Presentational: path.resolve(__dirname, '../src/components/presentational'),
+      Redux: path.resolve(__dirname, '../src/redux'),
+      Styles: path.resolve(__dirname, '../src/styles'),
+      Fonts: path.resolve(__dirname, '../src/fonts')
     }
   },
   plugins: [
@@ -81,7 +86,11 @@ module.exports = {
     new ResourceHintWebpackPlugin(),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(process.env)
-    })
+    }),
+    new CopyWebpackPlugin([{ 
+      from: path.join(__dirname, '../examples'),
+      to: 'examples' 
+    }])
   ],
   output: {
     filename: '[name].bundle.js',

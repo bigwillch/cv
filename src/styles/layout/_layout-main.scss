@@ -2,17 +2,14 @@
   box-sizing: border-box;
 }
 
-/* added inline in index.html */
-// html, body {
-//   margin: 0;
-// }
-
-main {
+main > section {
   /* added inline in index.html */
   // max-width: 960px;
   // margin: auto;
   // display: block;
-  padding-top: $gutter;
+  > div:first-child {
+    padding-top: $gutter;
+  }
   > div {
     > * {
       padding-left: $gutter;
@@ -23,6 +20,24 @@ main {
   }
 }
 
-p {
-  margin-top: 0;
+html.sidebar-active {
+  overflow: hidden;
+}
+
+// force ios safari to always show bottom nav bar
+html.mobileSafari {
+  &, & body {
+    height: 100%;
+    overflow: hidden;
+  }
+  main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
 }

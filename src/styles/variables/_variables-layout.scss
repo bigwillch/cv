@@ -1,8 +1,13 @@
+$breakpoint-mobile:  320px;
+$breakpoint-tablet:  740px;
+$breakpoint-desktop: 960px;
+$breakpoint-wide:    1300px;
+
 $mq-breakpoints: (
-    mobile:  320px,
-    tablet:  740px,
-    desktop: 960px,
-    wide:    1300px
+    mobile:  $breakpoint-mobile,
+    tablet:  $breakpoint-tablet,
+    desktop: $breakpoint-desktop,
+    wide:    $breakpoint-wide
 );
 
 @import "mq";
@@ -15,3 +20,5 @@ $gutter-small: 2px;
 $border-width: 4px;
 
 $sidebar-width: 180px;
+
+$sideloader-nav-height: 50px;

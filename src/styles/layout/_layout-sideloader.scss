@@ -1,0 +1,43 @@
+main {
+  > aside {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s right;
+    background: $color-white;
+    iframe {
+      width: 100%;
+      height: calc(100% - #{$sideloader-nav-height});
+      border: none;
+    }
+    > div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(-100% + #{$sideloader-nav-height});
+      transition: 0.2s bottom;
+      height: 100%;
+      &.open {
+        bottom: 0;
+      }
+    }
+  }
+  
+  > section {
+    position: relative;
+    right: 0;
+    transition: 0.4s right, 0.2s opacity;
+    &.sideloader-loading {
+      // opacity: 0.4;
+    }
+    &.sideloader-active {
+      right: 100%;
+      & + aside {
+        right: 0;
+      }
+    }
+  }
+}

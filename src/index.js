@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux'
+import store from 'Redux/store';
+import App from './components/App';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -13,6 +15,8 @@ if ('serviceWorker' in navigator) {
 }
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.querySelector('main')
 );

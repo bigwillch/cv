@@ -36,8 +36,10 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
-* Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
-* Gumbo beet greens corn soko endive gumbo gourd
+* Water spinach arugula pea tatsoi aubergine spring onion. Greens yarrow ricebean rutabaga endive cauliflower sea  
+[Test](/examples/test#example)
+* Gumbo beet greens corn soko endive gumbo gourd  
+[Homepage layout on Alphr using Flex](/examples/alphr#example)
 * Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
 * Brussels sprout coriander water
 * Nori grape silver beet broccoli kombu beet greens
