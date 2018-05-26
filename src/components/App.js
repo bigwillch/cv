@@ -5,15 +5,16 @@ import { sideTrigger } from 'Redux/actions/sideloader'
 import { isMobileSafari } from "react-device-detect";
 import classNames from 'classnames'
 
-import CV from './CV.md'
-import Readme from '../README.md'
+import CV from '../CV.md'
+import Readme from '../../README.md'
 
 import Link from 'Containers/Link.js'
 import List from 'Containers/List.js'
 import Sideloader from 'Containers/Sideloader.js'
+import ListItem from 'Presentational/ListItem.js'
 
-import fontello from './fonts/fontello/config.scss'
-import styles from './styles/main.scss'
+import fontello from 'Fonts/fontello/config.scss'
+import styles from 'Styles/main.scss'
 
 
 const mapStateToProps = (state) => {
@@ -45,7 +46,8 @@ class App extends React.Component {
           <CV
             components={{
               a: Link,
-              ul: List
+              ul: List,
+              li: ListItem
             }}
           />
           <Readme 

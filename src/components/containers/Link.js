@@ -28,27 +28,27 @@ let Link = (props) => {
       )
   }
 
-  // check href to check for preview hashtag
-  const href = props.href.split('#')
+  // check href to check for example hashtag
+  const href = props.href.split('#'),
+        sideload = href[1] === 'example' ? true : false,
+        text = sideload ? 'Example' : props.children,
+        className = classNames(
+          sideload && 'button button--forward'
+        )
 
-  const sideload = href[1] === 'preview' ? true : false
-  
-  const className = classNames(
-    sideload && 'sideload'
-  )
 
   return (
     <a 
       href={ href[0] }
+      target="_blank"
+      className={className}
       // if preview hashtag present trigger sideload action
       onClick={sideload ? (e) => {
         e.preventDefault()
         props.sideTrigger(href[0])
       } : null } 
-      className={className}
-      target="_blank"
     >
-      { props.children }
+      { text }
     </a>
   )
 }

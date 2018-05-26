@@ -36,8 +36,8 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
-* [Test](/examples/test#preview)
-* [Alphr](/examples/alphr#preview)
+* Water spinach arugula pea tatsoi aubergine spring onion. Greens yarrow ricebean rutabaga endive cauliflower sea: [Test](/examples/test#example)
+* [Homepage layout on Alphr using Flex](/examples/alphr#example)
 * Gumbo beet greens corn soko endive gumbo gourd
 * Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
 * Brussels sprout coriander water

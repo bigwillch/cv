@@ -1,21 +1,36 @@
 .button {
+  $color: $color-white;
+  $color-bg: $color-link;
+  $color-bg-hover: $color-link-hover;
+
+  @include linkSetColor($color, $color);
   display: inline-flex;
   align-items: center;
-  padding: 0 $gutter-half;
-  height: $gutter + $gutter-half;
+  padding: 0 $gutter-quarter;
   border-radius: 2px;
   cursor: pointer;
   outline: none;
-  color: $color-white;
-  background-color: $color-link;
+  background-color: $color-bg;
   transition: 0.2s background-color;
+  color: $color;
   &:hover {
-    background-color: $color-link-hover;
+    background-color: $color-bg-hover;
   }
   &.button--back {
-    @include arrow($color: $color-white, $direction: back);
+    @include arrow($color: $color, $direction: back);
     &:before {
       margin-right: $gutter-quarter;
+      background: none;
     }
+  }
+  &.button--forward {
+    @include arrow($color: $color, $position: after);
+    &:after {
+      margin-left: $gutter-quarter;
+      background: none;
+    }
+  }
+  &.button--chunky {
+    padding: $gutter-quarter $gutter-half;
   }
 }
