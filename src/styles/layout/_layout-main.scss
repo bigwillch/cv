@@ -20,6 +20,10 @@ main > section {
   }
 }
 
+html.sidebar-active {
+  overflow: hidden;
+}
+
 // force ios safari to always show bottom nav bar
 html.mobileSafari {
   &, & body {

@@ -24,6 +24,8 @@ const mapStateToProps = (state) => {
   }
 }
 
+const htmlClassList = document.querySelector('html').classList
+
 class App extends React.Component {
   
   constructor(props) {
@@ -32,7 +34,15 @@ class App extends React.Component {
   
   componentDidMount() {
     isMobileSafari &&
-    document.querySelector('html').classList.add('mobileSafari');
+    htmlClassList.add('mobileSafari');
+  }
+
+  componentDidUpdate() {
+    if (this.props.sidebarActive) {
+      htmlClassList.add('sidebar-active');
+    } else {
+      htmlClassList.remove('sidebar-active');
+    }
   }
 
   render() {

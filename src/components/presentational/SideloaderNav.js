@@ -27,7 +27,7 @@ export default class SideloaderNav extends React.Component {
         <nav>
           <div className="button button--back button--chunky" role="button" tabIndex="0" onClick={this.props.sideClose}>Back</div>
           <div 
-            className="button button--up button--chunky" 
+            className="button button--up button--chunky toggle" 
             role="button" 
             tabIndex="0"
             onClick={(e) => {
@@ -35,7 +35,7 @@ export default class SideloaderNav extends React.Component {
               this.toggleOpen()
               }
             }
-          >Info</div>
+          />
         </nav>
         <p>{this.props.description}</p>
       </div>

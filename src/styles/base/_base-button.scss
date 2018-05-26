@@ -1,36 +1,42 @@
 .button {
-  $color: $color-white;
-  $color-bg: $color-link;
-  $color-bg-hover: $color-link-hover;
-
-  @include linkSetColor($color, $color);
   display: inline-flex;
   align-items: center;
   padding: 0 $gutter-quarter;
   border-radius: 2px;
   cursor: pointer;
   outline: none;
-  background-color: $color-bg;
+  background-color: $color-button-bg;
   transition: 0.2s background-color;
-  color: $color;
+  color: $color-button;
   &:hover {
-    background-color: $color-bg-hover;
+    background-color: $color-button-bg-hover;
+  }
+  &:before, &:after {
+    background: none;
   }
   &.button--back {
-    @include arrow($color: $color, $direction: back);
+    @include arrow($color: $color-button, $direction: back);
     &:before {
       margin-right: $gutter-quarter;
-      background: none;
     }
   }
   &.button--forward {
-    @include arrow($color: $color, $position: after);
+    @include arrow($color: $color-button, $position: after);
     &:after {
       margin-left: $gutter-quarter;
-      background: none;
+    }
+  }
+  &.button--up {
+    @include arrow($color: $color-button, $direction: up, $position: after);
+    &:after {
+      margin-left: $gutter-quarter;
     }
   }
   &.button--chunky {
     padding: $gutter-quarter $gutter-half;
   }
+}
+
+a.button {
+  @include linkSetColor($color-button, $color-button);
 }

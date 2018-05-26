@@ -7,8 +7,11 @@
     border-left: 0;
     width: 6px;
     height: 6px;
+    transition: 0.2s transform;
     @if $direction == "back" {
       transform: rotateZ(225deg);
+    } @else if $direction == "up" {
+      transform: rotateZ(315deg);
     } @else {
       transform: rotateZ(45deg);
     }
