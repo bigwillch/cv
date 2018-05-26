@@ -8,22 +8,23 @@
         background: #ff69b4;
         margin: 0;
       }
-      main:before {
+      main:before,
+      main > section:before {
         content: '';
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-      }
-      main:before,
-      main > section > div {
         box-shadow: 0 0 20px #888;
         background: #fff;
         max-width: 960px;
         margin: auto;
-        display: block;
-        min-height: 100vh;
+      }
+      main > section > div {
+        max-width: 960px;
+        margin: auto;
+        position: relative
       }
       main > section {
         opacity: 0;

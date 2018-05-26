@@ -2,27 +2,6 @@
   box-sizing: border-box;
 }
 
-/* added inline in index.html */
-// html, body {
-//   margin: 0;
-// }
-
-// force ios to always show bottom nav bar
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
-}
-
 main > section {
   /* added inline in index.html */
   // max-width: 960px;
@@ -41,7 +20,20 @@ main > section {
   }
 }
 
-/* added inline in index.html */
-// p {
-//   margin-top: 0;
-// }
+// force ios safari to always show bottom nav bar
+html.mobileSafari {
+  &, & body {
+    height: 100%;
+    overflow: hidden;
+  }
+  main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
