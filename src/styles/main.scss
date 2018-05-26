@@ -19,8 +19,10 @@
 // }
 
 main {
-  > section > div {
+  > section {
     opacity: 1;
+  }
+  > section > div {
     // mapping silly markup to partials
     h1 {
       @import "modules/module-page-title";
