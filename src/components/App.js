@@ -16,6 +16,7 @@ import ListItem from 'Presentational/ListItem.js'
 import fontello from 'Fonts/fontello/config.scss'
 import styles from 'Styles/main.scss'
 
+const htmlClassList = document.querySelector('html').classList
 
 const mapStateToProps = (state) => {
   return {
@@ -24,8 +25,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const htmlClassList = document.querySelector('html').classList
-
 class App extends React.Component {
   
   constructor(props) {
@@ -33,16 +32,15 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    htmlClassList.remove('loading');
     isMobileSafari &&
-    htmlClassList.add('mobileSafari');
+    htmlClassList.add('mobileSafari')
   }
 
   componentDidUpdate() {
     if (this.props.sidebarActive) {
-      htmlClassList.add('sidebar-active');
+      htmlClassList.add('sidebar-active')
     } else {
-      htmlClassList.remove('sidebar-active');
+      htmlClassList.remove('sidebar-active')
     }
 
     if (this.props.sidebarLoading) {
