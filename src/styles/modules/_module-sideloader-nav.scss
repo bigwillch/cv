@@ -33,6 +33,10 @@
       content: 'Info';
     }
   }
+  .button--back {
+    opacity: 1;
+    transition: 0.2s opacity;
+  }
   &.open {
     .toggle {
       &:before {
@@ -41,6 +45,9 @@
       &:after {
         transform: rotateZ(135deg);
       }
+    }
+    .button--back {
+      opacity: 0;
     }
   }
 }
