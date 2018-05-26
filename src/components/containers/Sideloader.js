@@ -4,8 +4,6 @@ import { sideLoaded, sideClose } from 'Redux/actions/sideloader'
 
 import Nav from 'Presentational/SideloaderNav.js'
 
-import classNames from 'classnames'
-
 const mapStateToProps = (state) => {
   return {
     src: state.sideloader.href,
