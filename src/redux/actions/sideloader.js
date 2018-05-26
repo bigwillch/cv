@@ -3,11 +3,12 @@ export const SIDE_LOADED = 'SIDE_LOADED';
 export const SIDE_CLOSE = 'SIDE_CLOSE';
 
 // Action creators
-export const sideTrigger = (href) => {
+export const sideTrigger = (href, data) => {
   return {
     type: SIDE_TRIGGER,
     payload: {
-      href
+      href,
+      data
     }
   }
 }
@@ -27,7 +28,8 @@ export const sideClose = () => {
 const initialState = {
   href: null,
   loading: false,
-  active: false
+  active: false,
+  data: {}
 }
 
 // Reducers
@@ -38,7 +40,12 @@ export default (state = initialState, action) => {
       if (state.href === action.payload.href) {
         return { ...state, active: true }
       }
-      return { ...state, href: action.payload.href, loading: true}
+      return { 
+        ...state,
+        href: action.payload.href,
+        loading: true,
+        data: action.payload.data
+      }
     case SIDE_LOADED:
       return { ...state, loading: false, active: true }
     case SIDE_CLOSE:

@@ -7,8 +7,8 @@ import classNames from 'classnames'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sideTrigger: (href) => {
-      dispatch(sideTrigger(href))
+    sideTrigger: (href, data) => {
+      dispatch(sideTrigger(href, data))
     }
   }
 }
@@ -28,27 +28,29 @@ let Link = (props) => {
       )
   }
 
-  // check href to check for preview hashtag
-  const href = props.href.split('#')
-
-  const sideload = href[1] === 'preview' ? true : false
-  
-  const className = classNames(
-    sideload && 'sideload'
-  )
+  // check href to check for example hashtag
+  const href = props.href.split('#'),
+        sideload = href[1] === 'example' ? true : false,
+        text = sideload ? 'Example' : props.children,
+        className = classNames(
+          sideload && 'button button--forward'
+        )
 
   return (
     <a 
       href={ href[0] }
+      target="_blank"
+      className={className}
       // if preview hashtag present trigger sideload action
       onClick={sideload ? (e) => {
         e.preventDefault()
-        props.sideTrigger(href[0])
+        props.sideTrigger(
+          href[0],
+          { desc: props.children }
+        )
       } : null } 
-      className={className}
-      target="_blank"
     >
-      { props.children }
+      { text }
     </a>
   )
 }

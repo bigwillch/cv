@@ -65,7 +65,7 @@ main {
     }
   }
   > aside {
-    nav {
+    > div {
       @import "modules/module-sideloader-nav"
     }
   }

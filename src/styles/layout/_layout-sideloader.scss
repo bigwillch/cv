@@ -1,5 +1,4 @@
 main {
-
   > aside {
     position: fixed;
     z-index: 1;
@@ -14,8 +13,16 @@ main {
       height: calc(100% - #{$sideloader-nav-height});
       border: none;
     }
-    nav {
-      height: $sideloader-nav-height;
+    > div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(-100% + #{$sideloader-nav-height});
+      transition: 0.2s bottom;
+      height: 100%;
+      &.open {
+        bottom: 0;
+      }
     }
   }
   

@@ -1,12 +1,44 @@
 import React from 'react'
 
-let SideloaderNav = (props) => {
+import classNames from 'classnames'
 
-  return (
-    <nav>
-      <div className="button button--back" role="button" tabIndex="0" onClick={props.sideClose}>Back</div>
-    </nav>
-  )
+
+export default class SideloaderNav extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
+  
+  toggleOpen = () => {
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
+  }
+
+  render() {
+    const className = classNames(
+      this.state.open && 'open'
+    )
+    return (
+      <div className={className}>
+        <nav>
+          <div className="button button--back button--chunky" role="button" tabIndex="0" onClick={this.props.sideClose}>Back</div>
+          <div 
+            className="button button--up button--chunky toggle" 
+            role="button" 
+            tabIndex="0"
+            onClick={(e) => {
+              e.preventDefault()
+              this.toggleOpen()
+              }
+            }
+          />
+        </nav>
+        <p>{this.props.description}</p>
+      </div>
+    )
+  }
 }
-
-export default SideloaderNav

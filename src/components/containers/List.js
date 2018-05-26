@@ -15,7 +15,6 @@ export default class List extends React.Component {
   }
 
   checkScroll = (measure, contentRect) => {
-    console.log('check')
     measure()
     this.setState({
       scrolled: contentRect.scroll.left > ((contentRect.scroll.width - contentRect.client.width) / 2) ? true : false

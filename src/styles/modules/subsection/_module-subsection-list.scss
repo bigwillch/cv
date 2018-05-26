@@ -3,13 +3,18 @@
   margin-left: $gutter + $gutter-half;
   li {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: $gutter-half;
     @include arrow;
     &:before {
       margin-right: $gutter;
       margin-left: $gutter-quarter;
       flex-shrink: 0;
+      position: relative;
+      top: -3px;
+    }
+    br + .button {
+      margin-top: $gutter-quarter;
     }
   }
 }
