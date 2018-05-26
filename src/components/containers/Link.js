@@ -4,7 +4,6 @@ import { sideTrigger } from 'Redux/actions/sideloader'
 
 import Obfuscate from 'react-obfuscate'
 import classNames from 'classnames'
-import { isMobileSafari } from 'react-device-detect';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -32,7 +31,7 @@ let Link = (props) => {
   // check href to check for preview hashtag
   const href = props.href.split('#')
 
-  const sideload = href[1] === 'preview' && !isMobileSafari ? true : false
+  const sideload = href[1] === 'preview' ? true : false
   
   const className = classNames(
     sideload && 'sideload'

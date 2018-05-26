@@ -2,17 +2,16 @@ main {
 
   > aside {
     position: fixed;
+    z-index: 1;
     top: 0;
     right: -100vw;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     transition: 0.4s right;
     iframe {
       width: 100%;
       height: calc(100% - #{$sideloader-nav-height});
       border: none;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
     }
     nav {
       height: $sideloader-nav-height;
