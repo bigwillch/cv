@@ -1,14 +1,13 @@
 & {
   display: flex;
   list-style: none;
-  font-size: 0.8em;
   line-height: 21px;
   margin-top: -$gutter-half;
   padding-bottom: $gutter + $gutter-half;
   margin-bottom: -$gutter-half;
   position: relative;
   > li {
-    min-width: 80px;
+    min-width: 100px;
     flex-grow: 1;
     margin: 0 1px;
     background: $color-lightgrey;
@@ -24,7 +23,7 @@
       li {
         padding: $gutter-small $gutter-quarter;
         &:last-child {
-          padding-bottom: $gutter-half;
+          padding-bottom: $gutter;
         }
       }
     }
