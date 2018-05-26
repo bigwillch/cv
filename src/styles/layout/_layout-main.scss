@@ -9,18 +9,18 @@
 
 // force ios to always show bottom nav bar
 html, body {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 main {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 
 main > section {
@@ -28,7 +28,9 @@ main > section {
   // max-width: 960px;
   // margin: auto;
   // display: block;
-  padding-top: $gutter;
+  > div:first-child {
+    padding-top: $gutter;
+  }
   > div {
     > * {
       padding-left: $gutter;

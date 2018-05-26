@@ -8,6 +8,7 @@ main {
     width: 100vw;
     height: 100%;
     transition: 0.4s right;
+    background: $color-white;
     iframe {
       width: 100%;
       height: calc(100% - #{$sideloader-nav-height});
@@ -19,7 +20,6 @@ main {
   }
   
   > section {
-    opacity: 1;
     position: relative;
     right: 0;
     transition: 0.4s right, 0.2s opacity;

@@ -4,11 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <style>
-      body {
+      body, main, main > section {
         background: #ff69b4;
         margin: 0;
       }
-      main > section {
+      main:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      main:before,
+      main > section > div {
         box-shadow: 0 0 20px #888;
         background: #fff;
         max-width: 960px;
@@ -16,7 +25,7 @@
         display: block;
         min-height: 100vh;
       }
-      main > section > div {
+      main > section {
         opacity: 0;
         transition: 0.4s opacity;
       }
