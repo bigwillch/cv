@@ -1,5 +1,6 @@
 @import "variables/variables-layout";
 @import "variables/variables-colors";
+@import "variables/variables-icons";
 @import "mixins/mixin-arrow";
 @import "mixins/mixin-link";
 @import "base/base-typography";
@@ -8,6 +9,7 @@
 @import "layout/layout-main";
 @import "layout/layout-header";
 @import "layout/layout-sideloader";
+@import "modules/module-loading";
 
 main {
   > section {

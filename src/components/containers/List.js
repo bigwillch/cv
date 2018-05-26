@@ -22,7 +22,6 @@ export default class List extends React.Component {
   }
 
   render() {
-    // const scrollable = this.state.clientWidth < this.state.scrollWidth ? true : false
     const className = classNames(
       this.state.scrollable && 'scrollable',
       this.state.scrolled && 'scrolled'
