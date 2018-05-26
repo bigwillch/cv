@@ -7,8 +7,8 @@ import classNames from 'classnames'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sideTrigger: (href) => {
-      dispatch(sideTrigger(href))
+    sideTrigger: (href, data) => {
+      dispatch(sideTrigger(href, data))
     }
   }
 }
@@ -36,7 +36,6 @@ let Link = (props) => {
           sideload && 'button button--forward'
         )
 
-
   return (
     <a 
       href={ href[0] }
@@ -45,7 +44,10 @@ let Link = (props) => {
       // if preview hashtag present trigger sideload action
       onClick={sideload ? (e) => {
         e.preventDefault()
-        props.sideTrigger(href[0])
+        props.sideTrigger(
+          href[0],
+          { desc: props.children }
+        )
       } : null } 
     >
       { text }

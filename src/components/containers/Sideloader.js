@@ -8,7 +8,8 @@ import classNames from 'classnames'
 
 const mapStateToProps = (state) => {
   return {
-    src: state.sideloader.href
+    src: state.sideloader.href,
+    data: state.sideloader.data
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -32,7 +33,10 @@ let Sideloader = (props) => {
           src={props.src}
           onLoad={props.sideLoaded}
         ></iframe>
-        <Nav sideClose={props.sideClose}/>
+        <Nav 
+          sideClose={props.sideClose}
+          description={props.data.desc}
+        />
       </React.Fragment>
       }
     </React.Fragment>
