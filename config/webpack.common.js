@@ -86,7 +86,7 @@ module.exports = {
       'ENV': JSON.stringify(process.env)
     }),
     new CopyWebpackPlugin([{ 
-      from: path.join(__dirname, '../src/examples'),
+      from: path.join(__dirname, '../examples'),
       to: 'examples' 
     }])
   ],
