@@ -33,6 +33,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    htmlClassList.remove('loading');
     isMobileSafari &&
     htmlClassList.add('mobileSafari');
   }
@@ -42,6 +43,12 @@ class App extends React.Component {
       htmlClassList.add('sidebar-active');
     } else {
       htmlClassList.remove('sidebar-active');
+    }
+
+    if (this.props.sidebarLoading) {
+      htmlClassList.add('loading');
+    } else {
+      htmlClassList.remove('loading');
     }
   }
 

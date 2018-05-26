@@ -1,0 +1,47 @@
+html {
+  $icon-size: 100px;
+  body {
+    &:before {
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.8);
+    }
+    &:after {
+      background-image: $cat-icon;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      margin-top: -$icon-size/2;
+      margin-left: -$icon-size/2;
+      width: $icon-size;
+      height: $icon-size + ($icon-size / 100 * 7);
+      animation: rotate 1s infinite linear;
+    }
+    &:before, &:after {
+      content: '';
+      display: block;
+      position: fixed;
+      opacity: 0;
+      transition: 0.2s opacity;
+      // transition-delay: 0.5s;
+      pointer-events: none;
+    }
+  }
+  &.loading body {
+    &:before, &:after {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
