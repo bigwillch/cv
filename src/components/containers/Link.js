@@ -30,16 +30,18 @@ let Link = (props) => {
 
   // check href to check for preview hashtag
   const href = props.href.split('#')
+
+  const sideload = href[1] === 'preview' ? true : false
   
   const className = classNames(
-    href[1] === 'preview' && 'sideload'
+    sideload && 'sideload'
   )
 
   return (
     <a 
       href={ href[0] }
       // if preview hashtag present trigger sideload action
-      onClick={href[1] === 'preview' ? (e) => {
+      onClick={sideload ? (e) => {
         e.preventDefault()
         props.sideTrigger(href[0])
       } : null } 

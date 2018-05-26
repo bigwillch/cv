@@ -2,23 +2,19 @@ main {
 
   > aside {
     position: fixed;
+    z-index: 1;
     top: 0;
     right: -100vw;
     width: 100vw;
-    height: 100vw;
+    height: 100%;
     transition: 0.4s right;
     iframe {
       width: 100%;
-      height: 100%;
+      height: calc(100% - #{$sideloader-nav-height});
+      border: none;
     }
-    div[role="button"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: pink;
-      padding: 20px;
-      cursor: pointer;
-      outline: none;
+    nav {
+      height: $sideloader-nav-height;
     }
   }
   

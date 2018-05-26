@@ -1,0 +1,8 @@
+& {
+  background: $color-lightgrey;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 0 $gutter-half;
+}

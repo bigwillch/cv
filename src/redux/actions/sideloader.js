@@ -34,7 +34,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SIDE_TRIGGER:
-      return { ...state, href: action.payload.href, loading: true }
+      // if current link already loaded open straight away
+      if (state.href === action.payload.href) {
+        return { ...state, active: true }
+      }
+      return { ...state, href: action.payload.href, loading: true}
     case SIDE_LOADED:
       return { ...state, loading: false, active: true }
     case SIDE_CLOSE:
