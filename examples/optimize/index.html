@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Optimize Ready</title>
+    <link rel="stylesheet" type="text/css" href="/examples/optimize/github-embed.css">
+    <style>
+      body {
+        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+        font-size: 12px;
+      }
+      #wrap {
+        position: fixed;
+        top: 0;
+        right:0;
+        bottom:0;
+        left: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="settings-object"></div>
+    </div>
+  </body>
+  <script src="/examples/optimize/babel-polyfill-6.23.0.min.js"></script>
+  <script src="/examples/optimize/github-embed.min.js"></script>
+  <script>
+    githubEmbed('#settings-object', {
+    	"owner": "bigwillch",
+        "repo": "optimize-ready",
+        "ref": "master",
+    	"embed": [
+        {"path": "README.md"},
+        {"path": "optimizeReady.js", "type": "js"},
+      ]
+    });
+  </script>
+</html>
