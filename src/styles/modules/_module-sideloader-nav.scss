@@ -4,6 +4,7 @@
   padding: 0 $gutter-half;
   display: flex;
   flex-direction: column;
+  padding-bottom: $sideloader-nav-height;
   > * {
     width: 100%;
     margin-left: auto;

@@ -14,7 +14,8 @@
       top: -3px;
     }
     br + .button {
-      margin-top: $gutter-quarter;
+      margin-top: $gutter-half;
+      margin-bottom: $gutter-quarter;
     }
   }
 }
