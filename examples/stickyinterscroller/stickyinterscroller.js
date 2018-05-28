@@ -260,8 +260,10 @@ var interscroller = function () {
     iframeStyle.zIndex = 500;
     iframeStyle.transition = '0.2s box-shadow, 0.2s height, 0.4s opacity';
     iframeStyle.height = containerHeight + 'px';
+    iframeStyle.willChange = 'transform';
     scrollWrapper.style.position = 'relative';
     scrollWrapper.style.overflow = 'visible';
+    content.style.willChange = 'transform';
 
     update();
     windowTop.addEventListener('resize', update, false);
