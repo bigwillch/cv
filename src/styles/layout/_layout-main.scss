@@ -3,10 +3,6 @@
 }
 
 main > section {
-  /* added inline in index.html */
-  // max-width: 960px;
-  // margin: auto;
-  // display: block;
   > div:first-child {
     padding-top: $gutter;
   }

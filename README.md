@@ -4,6 +4,6 @@ CV built using [MDX](https://github.com/mdx-js/mdx) to convert markdown to [Reac
 
 Extra bits done using [React Measure](https://github.com/souporserious/react-measure), [React Obfuscate](https://github.com/coston/react-obfuscate) and [Remark Emoji](https://github.com/rhysd/remark-emoji) :smiley_cat:
 
-“Cat” icon by [Alina Oleynik](https://thenounproject.com/dorxela/) from [the Noun Project](https://thenounproject.com/).
+“Cat” loading / fav icon by [Alina Oleynik](https://thenounproject.com/dorxela/) from [the Noun Project](https://thenounproject.com/).
 
 [willhowlett.netlify.com](https://willhowlett.netlify.com/)

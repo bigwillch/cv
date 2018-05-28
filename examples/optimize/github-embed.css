@@ -211,16 +211,7 @@
     position: absolute;
 }
 
-.github-embed-frames iframe, .github-embed-frames pre {
-
-    width: 100%;
-
-    height: 100%;
-
-    overflow: auto;
-
-    margin: 0;
-}
+.github-embed-frames iframe, .github-embed-frames pre {width: 100%;height: 100%;overflow: auto;margin: 0;white-space: pre-wrap;}
 
 .github-embed-frames iframe {
 

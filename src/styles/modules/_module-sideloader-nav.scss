@@ -2,9 +2,6 @@
   background: $color-lightgrey;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   padding: 0 $gutter-half;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: $sideloader-nav-height;
   > * {
     width: 100%;
     margin-left: auto;
@@ -19,15 +16,27 @@
   }
   p {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 8vw;
     margin-bottom: 0;
-    @include mq($from: tablet) {
-      font-size: 59px;
+    padding: 0 $gutter-half;
+    overflow: hidden;
+    height: calc(100% - #{$sideloader-nav-height * 2});
+    font-size: 5vh;
+    em {
+      font-size: 3vh;
+      margin-top: $gutter;
+      font-style: normal;
     }
+    // @include mq($from: tablet) {
+    //   font-size: 49px;
+    //   em {
+    //     font-size: 27px;
+    //   }
+    // }
   }
   .toggle {
     &:before {
