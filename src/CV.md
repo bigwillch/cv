@@ -9,25 +9,31 @@ _fairly good front end developer_
 ## Skills
 
 * javascript
+  * ES6
   * react :heart_eyes:
   * node
+  * riotjs :unamused:
 * css
-  * sass
-  * smacss
+  * sass :thumbsup:
+  * smacss :heart:
+  * mobile first
 * drupal
-  * modules
-  * theming
+  * D7/D8
+  * theming :muscle:
+  * modules :ok_hand:
 * architecture
-  * taskrunners
-  * etc
-  * etc
-* teamwork
-  * mentoring
-  * etc
-  * etc
+  * npm
+  * grunt :broken_heart:
+  * webpack :sparkling_heart:
+  * LAMP :confused:
+* leadership
+  * mentoring :two_men_holding_hands:
+  * training
+  * dev planning
 * other
-  * optimize
-  * amp
+  * optimize :boom:
+  * AMP :rage:
+  * APIs
 
 ## Employment
 
@@ -36,51 +42,56 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
-* Water spinach arugula pea tatsoi aubergine spring onion. Greens yarrow ricebean rutabaga endive cauliflower sea  
-[Test](/examples/optimize#example)
-* Gumbo beet greens corn soko endive gumbo gourd  
-[Homepage layout on Alphr using Flex](/examples/alphr#example)
-* Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
-* Brussels sprout coriander water  
-[Sticky](/examples/stickyinterscroller#example)
-* Nori grape silver beet broccoli kombu beet greens
+* First point of call for queries and guidance on techniques / processes within team, with a focus on
+overseeing adoptation of new technologies
+* Line management and personal development of staff
+* Oversight of transitioning to React from Riot on [buyacar.co.uk](https://www.buyacar.co.uk)
+* Implementation of Google Optimize experiments; including creating 'Optimize Ready' event listener  
+[We had a requirement to change an API call depending on whether an Optimize experiment was running. _To achieve this I modified Google's page hide snippet to fire an event once Optimize had loaded, and modified our search call to wait for this event. I later turned this functionality into an NPM package (I've no idea if anyone else has used it)_](/examples/optimize#example)
+* Oversight and implementation of Front End aspects of Buyacar embeddable widget  
+[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team with little javscript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/buyacarwidget#example)
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
-* Beetroot water spinach okra water
-* Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify
-* Catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce
-* Sea lettuce water spinach gram fava bean leek dandelion silver beet
+* Front End ‘point person’ on major site launches including [alphr.com](http://www.alphr.com), [theweek.co.uk](http://www.theweek.co.uk) and [buyacar.co.uk] (https://www.buyacar.co.uk)  
+[Homepage layout on Alphr using Flex. _This was one of the first times we were able to use flex on one of our sites (thanks to us being allowed to drop support for IE10). I now use flex for **everything**, I'm a flexbox addict_](/examples/alphr#example)
+* Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio
+* Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
+[This proof of concept was made in collaboration with one of our Product Managers who wanted to find a way to improve advert viewability. _So far I've not found a way to deal with the slight jerkiness caused by iOS's buggy position:fixed; implementation. This upsets me greatly. To my knowledge we've not actually sold any of these formats but it was fun to make_](/examples/stickyinterscroller#example)
+* Line of contact between Front End and Back End teams
 
 ### The Gallery Partnership
 _IT services for charities_
 
 > Web Developer *(Dec 2009 - Dec 2013)*
 
-* Drupal
-* Client
-* Product
+* Implementation of multiple Drupal website build projects
+* Client consultation, training and support
+* Proactive engagement with product development / sales
 
 ### ITV Fixers
 _Youth media engagement charity_
 
 > Web Master *(Apr 2009 - Dec 2009)*
 
-* Web
+* Site content management using Joomla :cry:
+* Consultation and training of staff
 
 ### RedBird Productions
 _Educational documentary filmmakers_
 
 > Freelance video editor *(Mar 2009)*
 
-* Films
+* Production of four short films :video_camera:
 
 ### ITV Local
 _Online regional news_
 
 > UGC Operative *(Nov 2007 - Mar 2009)*
 
-* Moderation
+* Content moderation and support for user generated video news site
+* Video encoding / motion graphics
+* Statistical analysis and technical support for staff
 
 ## Education
 
@@ -89,6 +100,8 @@ _Online regional news_
 > *(2003-2006)*
 
 * First class honours: BA Media and Communication
+* Winner of 2005 London Royal Television Society student award for animation  
+[A very (very) simple animation made using After Effects. _I literally threw it together over a weekend when I was in an odd mood, so it was nice when it won a Royal Television Society award. I seem to always do my best work when I put in the least amount of effort and this is something I strive to bring into my professional life :innocent:_](https://www.youtube.com/embed/2yGS4sYBQJQ#example)
 
 ### Richmond-Upon-Thames College
 
@@ -105,5 +118,5 @@ _Online regional news_
 ## Extracurricular
 
 ```
-punk / comics / code / punk / comics / code / punk / comics / code
+punk / comics / cats / video games / lego / radio / cooking / films / penge
 ```
