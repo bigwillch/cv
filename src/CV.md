@@ -55,13 +55,13 @@ overseeing adoptation of new technologies
 [We had a requirement to change our search API call depending on whether an Optimize experiment was running. _To achieve this I modified Google's page hide snippet to fire an event once Optimize had loaded, and modified our search call to wait for this event.   
 I later turned this functionality into an NPM package (I've no idea if anyone else has used it)_](/examples/optimize#example)
 * Oversight and implementation of Front End aspects of Buyacar embeddable widget  
-[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team with little javscript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/buyacarwidget#example)
+[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team who had little javascript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/buyacarwidget#example)
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
 * Front End ‘point person’ on major site launches including [alphr.com](http://www.alphr.com), [theweek.co.uk](http://www.theweek.co.uk) and [buyacar.co.uk] (https://www.buyacar.co.uk)  
-[Homepage layout on Alphr using Flex. _This was one of the first times we were able to use flex on one of our sites (thanks to us being allowed to drop support for IE10).   
-I now use flex for **everything**, I'm a flexbox addict_](/examples/alphr#example)
+[Homepage layout on Alphr using Flex. _This was one of the first times we were able to use flex on one of our sites (thanks to us being allowed to drop support for IE10). I now use flex for **everything**, I'm a flexbox addict.  
+I made several layout mixins whilst working on this page (full-width-elem, equal-rows) which are now used by team members across a number of sites (and which could probably do with improving to be honest)_](/examples/alphr#example)
 * Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio
 * Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
 [This proof of concept was made in collaboration with one of our Product Managers who wanted to find a way to improve advert viewability. _So far I've not found a way to deal with the slight jerkiness caused by iOS's buggy position:fixed; implementation. This upsets me greatly :crying_cat_face:  
