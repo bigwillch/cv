@@ -19,12 +19,19 @@
   }
   p {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: 8vw;
     margin-bottom: 0;
+    padding: 0 $gutter-half;
+    em {
+      font-size: 5vw;
+      margin-top: $gutter;
+      font-style: normal;
+    }
     @include mq($from: tablet) {
       font-size: 59px;
     }

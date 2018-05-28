@@ -46,18 +46,18 @@ _Digital Publishing_
 overseeing adoptation of new technologies
 * Line management and personal development of staff
 * Oversight of transitioning to React from Riot on [buyacar.co.uk](https://www.buyacar.co.uk)
-* Implementation of Google Optimize experiments; including creating Optimize event listener to enable injection of parameters before API calls  
-[Test](/examples/optimize#example)
+* Implementation of Google Optimize experiments; including creating 'Optimize Ready' event listener  
+[We had a requirement to change an API call depending on whether an Optimize experiment was running. _To achieve this I modified Google's page hide snippet to fire an event once Optimize had loaded, and modified our search call to wait for this event. I later turned this functionality into an NPM package (I've no idea if anyone else has used it)_](/examples/optimize#example)
 * Oversight and implementation of Front End aspects of Buyacar embeddable widget  
-[Widget](/examples/buyacarwidget#example)
+[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team with little javscript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/buyacarwidget#example)
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
 * Front End ‘point person’ on major site launches including [alphr.com](http://www.alphr.com), [theweek.co.uk](http://www.theweek.co.uk) and [buyacar.co.uk] (https://www.buyacar.co.uk)  
-[Homepage layout on Alphr using Flex](/examples/alphr#example)
+[Homepage layout on Alphr using Flex. _This was one of the first times we were able to use flex on one of our sites (thanks to us being allowed to drop support for IE10). I now use flex for **everything**, I'm a flexbox addict_](/examples/alphr#example)
 * Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio
 * Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
-[Sticky](/examples/stickyinterscroller#example)
+[This proof of concept was made in collaboration with one of our Product Managers who wanted to find a way to improve advert viewability. _So far I've not found a way to deal with the slight jerkiness caused by iOS's buggy position:fixed; implementation. This upsets me greatly. To my knowledge we've not actually sold any of these formats but it was fun to make_](/examples/stickyinterscroller#example)
 * Line of contact between Front End and Back End teams
 
 ### The Gallery Partnership
@@ -101,7 +101,7 @@ _Online regional news_
 
 * First class honours: BA Media and Communication
 * Winner of 2005 London Royal Television Society student award for animation  
-[Homepage layout on Alphr using Flex](https://www.youtube.com/embed/2yGS4sYBQJQ#example)
+[A very (very) simple animation made using After Effects. _I literally threw it together over a weekend when I was in an odd mood, so it was nice when it won a Royal Television Society award. I seem to always do my best work when I put in the least amount of effort and this is something I strive to bring into my professional life :innocent:_](https://www.youtube.com/embed/2yGS4sYBQJQ#example)
 
 ### Richmond-Upon-Thames College
 
