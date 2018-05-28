@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Buyacar Widget</title>
+    <style>
+      #wrap {
+        position: fixed;
+        top: 0;
+        right:0;
+        bottom:0;
+        left: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      main {
+        font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        padding: 20px;
+      }
+      main > a {
+        font-size: 0.8em;
+        margin-bottom: 20px;
+        color: #bbb;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <main>
+        <div id="buyacar-isccw" data-vehicle_type="" data-make="ford" data-model="mondeo" data-edition="hatchback"></div>
+        <script type="text/javascript">
+          !function (e, f, u) { e.async = 1; e.src = u; f.parentNode.insertBefore(e, f); }
+            (document.createElement('script'), document.getElementsByTagName('script')
+            [0], '//cdn1.buyacar.co.uk/misc/advagg_js/site_widget/stock/v1/isccw.js');
+        </script>
+        <a href="https://www.buyacar.co.uk/site_widget/demo?make=ford&model=mondeo&edition=hatchback" target="_blank">View embed information</a>
+      </main>
+    </div>
+  </body>
+</html>
