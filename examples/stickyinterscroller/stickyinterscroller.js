@@ -3,7 +3,7 @@ var interscroller = function () {
   // USER VARIABLES
   var sticky = true, // edit to decide if ad should be sticky
     containerHeight = 200, // height of container in px
-    parallaxAmount = 400, // adjust parallax effect (plus or minus for fast or slow, 0 for no parallax)
+    parallaxAmount = -200, // adjust parallax effect (plus or minus for fast or slow, 0 for no parallax)
     stickyTop = 0, // if site has stickynav / header update accordingly, otherwise set as 0
     boxShadowStyle = 'rgba(0, 0, 0, 0.4) 0px 0px 24px 0px'; // applied when sticky
 
