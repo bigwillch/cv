@@ -16,7 +16,8 @@ var interscroller = function () {
     contentMovementRange = 0,
     iframe = windowTop.document.getElementById(window.frameElement.id),
     iframeStyle = iframe.style,
-    iframeParent = iframe.parentElement,
+    scrollWrapper = windowTop.document.getElementById('scrollWrapper'),
+    containerHeight = scrollWrapper.offsetHeight,
     offset = 0,
     parallaxOffset = 0,
     stickyActive = false,
@@ -67,7 +68,7 @@ var interscroller = function () {
     return function () {
       if (isElementInViewport(iframe)) {
         var trigger = (windowTop.innerHeight - content.offsetHeight) / 2;
-        var rect = iframeParent.getBoundingClientRect();
+        var rect = scrollWrapper.getBoundingClientRect();
 
         // check distance from bottom
         if (rect.top + containerHeight > content.offsetHeight + trigger) {
@@ -105,7 +106,6 @@ var interscroller = function () {
       iframeStyle.position = 'fixed';
       iframeStyle.top = stickyTop + 'px';
       iframeStyle.left = 0;
-      iframeParent.style.paddingTop = containerHeight + 'px';
       stickyActive = true;
     },
 
@@ -125,13 +125,11 @@ var interscroller = function () {
         iframeStyle.top = contentMovementRange + 'px';
       }
       contentStyle.top = (contentMovementRange + parallaxAmount) * -1 + 'px';
-      iframeParent.style.paddingTop = containerHeight + 'px';
       stickyActive = false;
     },
 
     static: function () {
       iframeStyle.height = content.offsetHeight + 'px';
-      iframeParent.style.paddingTop = content.offsetHeight + 'px';
       iframeStyle.position = 'absolute';
       iframeStyle.top = 0;
       contentStyle.top = 0;
@@ -141,14 +139,12 @@ var interscroller = function () {
     },
 
     setPosition: function () {
-      var rect = iframeParent.getBoundingClientRect();
+      var rect = scrollWrapper.getBoundingClientRect();
       iframeStyle.left = rect.left * -1 + 'px';
     },
 
     scrollInRange: function () {
       control.updateContentMovementRange();
-      // console.log(contentMovementRange);
-      console.log(handlerElemChild);
 
       if (handlerElemChild.getBoundingClientRect().top * -1 <= contentMovementRange) {
         return true;
@@ -225,6 +221,8 @@ var interscroller = function () {
 
   var update = debounce(function () {
 
+    containerHeight = scrollWrapper.offsetHeight;
+
     // if not enough room to scroll nicely make static
     if (!control.roomToScroll()) {
       control.static();
@@ -265,15 +263,8 @@ var interscroller = function () {
     iframeStyle.width = '100vw';
     iframeStyle.maxWidth = 'none';
     iframeStyle.zIndex = 500;
-    iframeStyle.transition = '0.2s box-shadow';
-    iframeParent.style.position = 'relative';
-
-    
-    windowTop.document.getElementById('scrollWrapper').style.padding = 0;
-    
-    // windowTop = windowTop.document.querySelector('#wrap');
-
-    // windowTop = windowTop.document.getElementById('wrap') ? windowTop.document.getElementById('wrap') : windowTop;
+    iframeStyle.transition = '0.4s box-shadow';
+    scrollWrapper.style.position = 'relative';
 
     update();
     windowTop.addEventListener('resize', update, false);
@@ -283,8 +274,6 @@ var interscroller = function () {
   return init();
 }
 
-console.log('start');
-console.log(interscroller);
 if (window.top !== window.self) {
   interscroller();
 }

@@ -24,6 +24,17 @@
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
     }
+    #scrollWrapper {
+      position: relative;
+      height: 200px;
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+    @media only screen and (max-width: 600px) {
+      #scrollWrapper {
+        height: 50vh;
+      }
+    }
   </style>
 </head>
 
@@ -31,7 +42,7 @@
   <div id="wrap">
     <main>
       <div id="scrollWrapper">
-        <iframe id="iframeID" width="1000" height="300" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="/examples/stickyinterscroller/content.html"></iframe>
+        <iframe id="iframeID" width="100%" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="/examples/stickyinterscroller/content.html"></iframe>
       </div>
       
       <article>
