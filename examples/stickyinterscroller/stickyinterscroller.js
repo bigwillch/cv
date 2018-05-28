@@ -24,7 +24,7 @@ var interscroller = function () {
     handler,
     handlerActive = false,
     handlerElem = windowTop.document.querySelector('#wrap') ? windowTop.document.querySelector('#wrap') : windowTop,
-    handlerElemChild = windowTop.document.querySelector('#wrap') ? windowTop.document.querySelector('#wrap > *') : windowTop.querySelector('body');
+    handlerElemChild = windowTop.document.querySelector('#wrap') ? windowTop.document.querySelector('#wrap > *') : windowTop.document.querySelector('body');
 
   // function to check if element is visible. Stolen from http://stackoverflow.com/a/7557433/5628
   var isElementInViewport = function (elem) {
