@@ -2,8 +2,8 @@ var interscroller = function () {
   'use strict';
   // USER VARIABLES
   var sticky = true, // edit to decide if ad should be sticky
-    containerHeight = 200, // height of container in px
     parallaxAmount = -200, // adjust parallax effect (plus or minus for fast or slow, 0 for no parallax)
+    stickySitAmount = 100, // extra amount in pixels to sit at top once fully scrolled
     stickyTop = 0, // if site has stickynav / header update accordingly, otherwise set as 0
     boxShadowStyle = 'rgba(0, 0, 0, 0.4) 0px 0px 24px 0px'; // applied when sticky
 
@@ -122,7 +122,7 @@ var interscroller = function () {
       }
       else {
         control.updateContentMovementRange();
-        iframeStyle.top = contentMovementRange + 'px';
+        iframeStyle.top = contentMovementRange + stickySitAmount + 'px';
       }
       contentStyle.top = (contentMovementRange + parallaxAmount) * -1 + 'px';
       stickyActive = false;
@@ -145,36 +145,25 @@ var interscroller = function () {
 
     scrollInRange: function () {
       control.updateContentMovementRange();
+      return handlerElemChild.getBoundingClientRect().top * -1 <= contentMovementRange ? true : false;
+    },
 
-      if (handlerElemChild.getBoundingClientRect().top * -1 <= contentMovementRange) {
-        return true;
-      }
-      return false;
+    stickySit: function () {
+      return handlerElemChild.getBoundingClientRect().top * -1 >= contentMovementRange + stickySitAmount ? false : true;
     },
 
     inView: function () {
       control.updateContentMovementRange();
-
-      if (handlerElemChild.getBoundingClientRect().top * -1 > contentMovementRange + containerHeight) {
-        return false;
-      }
-      return true;
+      return handlerElemChild.getBoundingClientRect().top * -1 > contentMovementRange + containerHeight + stickySitAmount ? false : true;
     },
 
     roomToScroll: function () {
       control.updateContentMovementRange();
-
-      if (contentMovementRange < (content.offsetHeight / 100) * 10) {
-        return false;
-      }
-      return true;
+      return contentMovementRange < (content.offsetHeight / 100) * 10 ? false : true;
     },
 
     pageTop: function () {
-      if (handlerElemChild.getBoundingClientRect().top * -1 === 0) {
-        return true;
-      }
-      return false;
+      return handlerElemChild.getBoundingClientRect().top * -1 === 0 ? true : false;
     },
 
     updateContentMovementRange: function () {
@@ -185,7 +174,6 @@ var interscroller = function () {
 
   // sticky interscroll
   var interscrollSticky = function () {
-    console.log('scroll');
     return function () {
 
       if (stickyReset) {
@@ -195,12 +183,16 @@ var interscroller = function () {
         return;
       }
 
-      if (control.scrollInRange()) {
+      if (control.stickySit()) {
         control.stick();
+      }
+      if (control.scrollInRange()) {
         control.scroll();
       }
       else {
-        control.unstick();
+        if (!control.stickySit()) {
+          control.unstick();
+        }
         // if scrolled out of view then reset position
         if (!control.inView()) {
           iframeStyle.top = 0;
@@ -252,7 +244,6 @@ var interscroller = function () {
 
   var init = function () {
 
-    console.log('init');
     handler = interscrollNonSticky();
     if (sticky) {
       handler = interscrollSticky();
@@ -263,8 +254,10 @@ var interscroller = function () {
     iframeStyle.width = '100vw';
     iframeStyle.maxWidth = 'none';
     iframeStyle.zIndex = 500;
-    iframeStyle.transition = '0.4s box-shadow';
+    iframeStyle.transition = '0.2s box-shadow, 0.2s height';
+    iframeStyle.height = containerHeight + 'px';
     scrollWrapper.style.position = 'relative';
+    scrollWrapper.style.overflow = 'visible';
 
     update();
     windowTop.addEventListener('resize', update, false);
