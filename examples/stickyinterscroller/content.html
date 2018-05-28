@@ -64,14 +64,15 @@
       <div id="interscroller-content">
         <p class="bottom text">... with Tom's Cruises</p>
         <picture>
-          <source media="(min-width: 760px)" srcset="/examples/stickyinterscroller/images/beach.jpg">
-          <img src="/examples/stickyinterscroller/images/beach-small.jpg" alt="Beach">
+          <source media="(min-width: 760px)" data-srcset="/examples/stickyinterscroller/images/beach.jpg">
+          <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/examples/stickyinterscroller/images/beach-small.jpg" alt="Beach">
         </picture>
       </div>
     </div>
   </div>
 
-  <script src="/examples/stickyinterscroller/stickyinterscroller.min.js"></script>
+  <script src="/examples/stickyinterscroller/stickyinterscroller.min.js" async=""></script>
+  <script src="/examples/alphr/index_files/lazysizes.min.js" async=""></script>
 
 </body>
 

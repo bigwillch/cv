@@ -9,25 +9,31 @@ _fairly good front end developer_
 ## Skills
 
 * javascript
+  * ES6
   * react :heart_eyes:
   * node
+  * riotjs :unamused:
 * css
-  * sass
-  * smacss
+  * sass :thumbsup:
+  * smacss :heart:
+  * mobile first
 * drupal
-  * modules
-  * theming
+  * D7/D8
+  * theming :muscle:
+  * modules :ok_hand:
 * architecture
-  * taskrunners
-  * etc
-  * etc
-* teamwork
-  * mentoring
-  * etc
-  * etc
+  * npm
+  * grunt :broken_heart:
+  * webpack :sparkling_heart:
+  * LAMP :confused:
+* leadership
+  * mentoring :two_men_holding_hands:
+  * training
+  * dev planning
 * other
-  * optimize
-  * amp
+  * optimize :boom:
+  * AMP :rage:
+  * APIs
 
 ## Employment
 
@@ -37,15 +43,14 @@ _Digital Publishing_
 > Front End Team Lead *(Jan 2017 - present)*
 
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
-overseeing adoptation of new techniques
+overseeing adoptation of new technologies
 
-* Line management and personal devlopment of staff
+* Line management and personal development of staff
 
-* Implementation of Google Optimize experiments across [buyacar.co.uk] (https://www.buyacar.co.uk)   
+* Oversight of transitioning to React from Riot on [buyacar.co.uk](https://www.buyacar.co.uk)
+
+* Implementation of Google Optimize experiments; including creating Optimize event listener to enable injection of parameters before API calls  
 [Test](/examples/optimize#example)
-
-* Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
-[Sticky](/examples/stickyinterscroller#example)
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
@@ -53,6 +58,9 @@ overseeing adoptation of new techniques
 [Homepage layout on Alphr using Flex](/examples/alphr#example)
 
 * Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio
+
+* Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
+[Sticky](/examples/stickyinterscroller#example)
 
 * Line of contact between Front End and Back End teams
 
@@ -81,7 +89,7 @@ _Educational documentary filmmakers_
 
 > Freelance video editor *(Mar 2009)*
 
-* Production of four short films
+* Production of four short films :video_camera:
 
 ### ITV Local
 _Online regional news_
@@ -120,5 +128,5 @@ _Online regional news_
 ## Extracurricular
 
 ```
-punk / comics / code / punk / comics / code / punk / comics / code
+punk / comics / cats / video games / lego / radio / cooking / films / penge
 ```
