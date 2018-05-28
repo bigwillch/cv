@@ -37,11 +37,12 @@ _Digital Publishing_
 > Front End Team Lead *(Jan 2017 - present)*
 
 * Water spinach arugula pea tatsoi aubergine spring onion. Greens yarrow ricebean rutabaga endive cauliflower sea  
-[Test](/examples/test#example)
+[Test](/examples/optimize#example)
 * Gumbo beet greens corn soko endive gumbo gourd  
 [Homepage layout on Alphr using Flex](/examples/alphr#example)
 * Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
-* Brussels sprout coriander water
+* Brussels sprout coriander water  
+[Sticky](/examples/stickyinterscroller#example)
 * Nori grape silver beet broccoli kombu beet greens
 
 > Front End Developer *(Jan 2014 - Jan 2017)*

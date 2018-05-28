@@ -11,6 +11,10 @@
 @import "layout/layout-sideloader";
 @import "modules/module-loading";
 
+body {
+  overflow: visible;
+}
+
 main {
   > section {
     opacity: 1;

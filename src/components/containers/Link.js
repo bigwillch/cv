@@ -31,7 +31,7 @@ let Link = (props) => {
   // check href to check for example hashtag
   const href = props.href.split('#'),
         sideload = href[1] === 'example' ? true : false,
-        text = sideload ? 'Example' : props.children,
+        text = sideload ? 'Load example' : props.children,
         className = classNames(
           sideload && 'button button--forward'
         )
