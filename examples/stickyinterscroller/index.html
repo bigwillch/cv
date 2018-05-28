@@ -5,13 +5,15 @@
   <style>
     body {
       margin: 0;
+      background: #eee;
     }
     main {
-      max-width: 1200px;
+      max-width: 980px;
       min-height: 300vh;
-      background: #eee;
+      background: #fff;
       margin: auto;
       padding: 0 20px;
+      line-height: 1.4;
     }
 
     #wrap {
@@ -26,10 +28,19 @@
     }
     #scrollWrapper {
       position: relative;
-      margin-left: -20px;
-      margin-right: -20px;
       overflow: hidden;
+      opacity: 0;
+      transition: 0.4s opacity;
+      transition-delay: 0.1s;
     }
+    /* iframe {
+      width: 100vw;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      opacity: 0;
+      transition: 0.4s opacity;
+    } */
   </style>
   <link type="text/css" href="/examples/stickyinterscroller/styles.css" media="all" rel="stylesheet">
 </head>

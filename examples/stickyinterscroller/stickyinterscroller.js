@@ -80,7 +80,7 @@ var interscroller = function () {
         else {
           offset = 0;
         }
-        contentStyle.top = offset + 'px';
+        control.setContentTop(offset);
       }
     };
   };
@@ -90,12 +90,12 @@ var interscroller = function () {
     scroll: function () {
       if (control.pageTop()) {
         control.stick();
-        contentStyle.top = 0;
+        control.setContentTop(0)
         stickyReset = false;
         return;
       }
       parallaxOffset = ((handlerElemChild.getBoundingClientRect().top * -1) / contentMovementRange) * parallaxAmount;
-      contentStyle.top = ((handlerElemChild.getBoundingClientRect().top * -1) + parallaxOffset) * -1 + 'px';
+      control.setContentTop(((handlerElemChild.getBoundingClientRect().top * -1) + parallaxOffset) * -1 )
     },
 
     stick: function (reset) {
@@ -104,7 +104,7 @@ var interscroller = function () {
       }
       iframeStyle.height = containerHeight + 'px';
       iframeStyle.position = 'fixed';
-      iframeStyle.top = stickyTop + 'px';
+      iframeStyle.transform = 'translateY(' + stickyTop + 'px)';
       iframeStyle.left = 0;
       stickyActive = true;
     },
@@ -118,21 +118,21 @@ var interscroller = function () {
       iframeStyle.position = 'absolute';
       control.setPosition();
       if (stickyReset) {
-        iframeStyle.top = 0;
+        iframeStyle.transform = 'translateY(0)';
       }
       else {
         control.updateContentMovementRange();
-        iframeStyle.top = contentMovementRange + stickySitAmount + 'px';
+        iframeStyle.transform = 'translateY(' + (contentMovementRange + stickySitAmount) + 'px)';
       }
-      contentStyle.top = (contentMovementRange + parallaxAmount) * -1 + 'px';
+      control.setContentTop((contentMovementRange + parallaxAmount) * -1);
       stickyActive = false;
     },
 
     static: function () {
       iframeStyle.height = content.offsetHeight + 'px';
       iframeStyle.position = 'absolute';
-      iframeStyle.top = 0;
-      contentStyle.top = 0;
+      iframeStyle.transform = 'translateY(0)';
+      control.setContentTop(0);
       stickyActive = false;
       stickyReset = true;
       control.setPosition();
@@ -168,6 +168,10 @@ var interscroller = function () {
 
     updateContentMovementRange: function () {
       contentMovementRange = content.offsetHeight - containerHeight - parallaxAmount;
+    },
+
+    setContentTop: function(top) {
+      contentStyle.transform = 'translateY(' + top + 'px)';
     }
 
   };
@@ -195,7 +199,7 @@ var interscroller = function () {
         }
         // if scrolled out of view then reset position
         if (!control.inView()) {
-          iframeStyle.top = 0;
+          iframeStyle.transform = 'translateY(0)';
           stickyReset = true;
         }
       }
@@ -254,7 +258,7 @@ var interscroller = function () {
     iframeStyle.width = '100vw';
     iframeStyle.maxWidth = 'none';
     iframeStyle.zIndex = 500;
-    iframeStyle.transition = '0.2s box-shadow, 0.2s height';
+    iframeStyle.transition = '0.2s box-shadow, 0.2s height, 0.4s opacity';
     iframeStyle.height = containerHeight + 'px';
     scrollWrapper.style.position = 'relative';
     scrollWrapper.style.overflow = 'visible';
@@ -262,6 +266,7 @@ var interscroller = function () {
     update();
     windowTop.addEventListener('resize', update, false);
 
+    scrollWrapper.style.opacity = 1;
   };
 
   return init();
