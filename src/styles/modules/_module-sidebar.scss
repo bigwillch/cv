@@ -41,4 +41,29 @@
       background: linear-gradient(to right, rgba(255,255,255,0) 0%, $color-white 80%);
     }
   }
+  @include mq($from: desktop) {
+    // skills
+    h2:first-of-type + ul {
+      margin-right: -$sidebar-width + $gutter;
+      background: $color-white;
+      padding-bottom: 0;
+      margin-bottom: $gutter + $gutter-half;
+      position: relative;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -$gutter - $gutter-half;
+        height: $gutter + $gutter-half;
+        width: $sidebar-width - ($gutter * 2);
+        border-bottom: solid $gutter-quarter $color-white;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, $color-white 100%);
+      }
+      &:after {
+        top: auto;
+        bottom: -$gutter - $gutter-half;
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
