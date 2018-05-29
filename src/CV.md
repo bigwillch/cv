@@ -39,6 +39,7 @@ _fairly good front end developer_
   * optimize :boom:
   * AMP :rage:
   * APIs
+  * jest :persevere:
 
 ## Employment
 
