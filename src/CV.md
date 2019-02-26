@@ -3,7 +3,7 @@ _fairly good front end developer_
 
 > [email](CONTACTEMAIL)
 > [tel](CONTACTTEL)
-> [github](https://github.com/bigwillch)
+> [github](https://github.com/willhowlett)
 > [linkedin](https://www.linkedin.com/in/will-howlett-54804bb0/)
 
 ## Skills
