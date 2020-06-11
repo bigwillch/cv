@@ -1,7 +1,7 @@
 const path = require('path');
 const emoji = require('remark-emoji')
 const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin')
@@ -72,9 +72,7 @@ module.exports = {
     }
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '..')
-    }),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../src/index.html'),
       inject: 'body'
@@ -87,10 +85,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(process.env)
     }),
-    new CopyWebpackPlugin([{ 
-      from: path.join(__dirname, '../examples'),
-      to: 'examples' 
-    }])
+    new CopyWebpackPlugin({
+      patterns: [{ 
+        from: path.join(__dirname, '../examples'),
+        to: 'examples' 
+      }]
+    })
   ],
   output: {
     filename: '[name].bundle.js',
