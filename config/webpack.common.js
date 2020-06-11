@@ -21,7 +21,7 @@ module.exports = {
         test: /\.scss$/,
         use: [{
           loader: "style-loader", options: {
-            insertInto: 'body'
+            insert: 'body'
           }
         }, {
           loader: "css-loader", options: {
@@ -30,9 +30,11 @@ module.exports = {
         }, {
           loader: "sass-loader", options: {
             sourceMap: true,
-            includePaths: [
-              "node_modules/sass-mq"
-            ]
+            sassOptions: {
+              includePaths: [
+                "node_modules/sass-mq"
+              ],
+            },
           }
         }]
       },
