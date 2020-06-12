@@ -60,7 +60,7 @@ I later turned this functionality into an NPM package (I've no idea if anyone el
 
 > Front End Developer *(Jan 2014 - Jan 2017)*
 
-* Front End ‘point person’ on major site launches including [alphr.com](http://www.alphr.com), [theweek.co.uk](http://www.theweek.co.uk) and [buyacar.co.uk] (https://www.buyacar.co.uk)  
+* Front End ‘point person’ on major site launches including [alphr.com](http://www.alphr.com), [theweek.co.uk](http://www.theweek.co.uk) and [buyacar.co.uk](https://www.buyacar.co.uk)  
 [Homepage layout on Alphr using Flex. _This was one of the first times we were able to use flex on one of our sites (thanks to us being allowed to drop support for IE10). I now use flex for **everything**, I'm a flexbox addict.  
 I made several layout mixins whilst working on this page (full-width-elem, equal-rows) which are now used by team members across a number of sites (and which could probably do with improving to be honest)_](/examples/alphr#example)
 * Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio

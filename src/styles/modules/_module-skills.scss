@@ -9,17 +9,24 @@
   > li {
     min-width: 110px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     margin: 0 1px;
-    background: $color-lightgrey;
-    > span p {
-      background: $color-black;
-      color: $color-white;
-      padding: $gutter-small $gutter-quarter;
-      margin: 0;
+    padding: $gutter-small $gutter-quarter 0;
+    background: $color-black;
+    color: $color-white;
+    > span {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     ul {
       padding: 0;
+      margin: $gutter-small -#{$gutter-quarter} 0;
       list-style: none;
+      background: $color-lightgrey;
+      color: $color-black;
+      flex-grow: 1;
       li {
         padding: $gutter-small $gutter-quarter;
         &:last-child {
