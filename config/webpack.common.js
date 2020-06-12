@@ -47,7 +47,7 @@ module.exports = {
           {
             loader: '@mdx-js/loader',
             options: {
-              mdPlugins: [emoji]
+              remarkPlugins: [emoji]
             }
           }
         ]
