@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { MDXProvider } from '@mdx-js/react';
 import { sideTrigger } from 'Redux/actions/sideloader'
 
-import { isMobileSafari } from "react-device-detect";
+import { isMobileSafari } from 'react-device-detect';
 import classNames from 'classnames'
 
 import CV from '../CV.md'
@@ -26,68 +26,69 @@ const mapStateToProps = (state) => {
   }
 }
 
-class App extends React.Component {
-  
-  constructor(props) {
-    super(props);
-  }
-  
-  componentDidMount() {
+const App = ({
+  sidebarLoading,
+  sidebarActive,
+}) => {
+
+  useEffect(() => {
     isMobileSafari &&
     htmlClassList.add('mobileSafari')
-  }
+  }, []);
 
-  componentDidUpdate() {
-    if (this.props.sidebarActive) {
+  useEffect(() => {
+    if (sidebarActive) {
       htmlClassList.add('sidebar-active')
     } else {
       htmlClassList.remove('sidebar-active')
     }
 
-    if (this.props.sidebarLoading) {
+    if (sidebarLoading) {
       htmlClassList.add('loading');
     } else {
       htmlClassList.remove('loading');
     }
-  }
+  }, [
+    sidebarLoading,
+    sidebarActive,
+  ])
 
-  render() {
-    const className = classNames(
-      this.props.sidebarLoading && 'sideloader-loading',
-      this.props.sidebarActive && 'sideloader-active'
-    )
-    return (
-      <>
-        <section className={className}>
-          <MDXProvider
-            components={{
-              a: Link,
-              ul: List,
-              li: ListItem
-            }}
-          >
-            <div>
-              <CV />
-            </div>
-          </MDXProvider>
-          <MDXProvider
-            components={{
-              a: Link,
-            }}
-          >
-            <div>
-              <Readme />
-            </div>
-          </MDXProvider>
-        </section>
-        <aside>
-          <Sideloader />
-        </aside>
-      </>
-    )
-  }
+  const className = classNames(
+    sidebarLoading && 'sideloader-loading',
+    sidebarActive && 'sideloader-active'
+  )
+
+  return (
+    <>
+      <section className={className}>
+        <MDXProvider
+          components={{
+            a: Link,
+            ul: List,
+            li: ListItem
+          }}
+        >
+          <div>
+            <CV />
+          </div>
+        </MDXProvider>
+        <MDXProvider
+          components={{
+            a: Link,
+          }}
+        >
+          <div>
+            <Readme />
+          </div>
+        </MDXProvider>
+      </section>
+      <aside>
+        <Sideloader />
+      </aside>
+    </>
+  )
 }
 
-export default App = connect(
+export default connect(
   mapStateToProps
 )(App)

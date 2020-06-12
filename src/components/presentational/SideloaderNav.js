@@ -1,44 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import classNames from 'classnames'
 
+export const SideloaderNav = ({
+  sideClose,
+  description,
+}) => {
 
-export default class SideloaderNav extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    };
-  }
-  
-  toggleOpen = () => {
-    this.setState(prevState => ({
-      open: !prevState.open
-    }));
+  const [open, setOpen] = useState(false);
+
+  const className = classNames(
+    open && 'open'
+  );
+
+  const toggleOpen = () => {
+    setOpen(!open);
   }
 
-  render() {
-    const className = classNames(
-      this.state.open && 'open'
-    )
-    return (
-      <div className={className}>
-        <nav>
-          <div className="button button--back button--chunky" role="button" tabIndex="0" onClick={this.props.sideClose}>Back</div>
-          <div 
-            className="button button--up toggle" 
-            role="button" 
-            tabIndex="0"
-            onClick={(e) => {
-              e.preventDefault()
-              this.toggleOpen()
-              }
+  return (
+    <div className={className}>
+      <nav>
+        <div className="button button--back button--chunky" role="button" tabIndex="0" onClick={sideClose}>Back</div>
+        <div 
+          className="button button--up toggle" 
+          role="button" 
+          tabIndex="0"
+          onClick={(e) => {
+            e.preventDefault()
+            this.toggleOpen()
             }
-          />
-        </nav>
-        <p>{this.props.description}</p>
-      </div>
-    )
-  }
+          }
+        />
+      </nav>
+      <p>{description}</p>
+    </div>
+  )
 }

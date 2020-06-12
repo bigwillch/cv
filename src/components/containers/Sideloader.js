@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { sideLoaded, sideClose } from 'Redux/actions/sideloader'
 
-import Nav from 'Presentational/SideloaderNav.js'
+import { SideloaderNav as Nav  } from 'Presentational/SideloaderNav.js'
 
 const mapStateToProps = (state) => {
   return {
