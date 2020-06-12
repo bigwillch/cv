@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { MDXProvider } from '@mdx-js/react';
 import { sideTrigger } from 'Redux/actions/sideloader'
 
 import { isMobileSafari } from "react-device-detect";
@@ -56,25 +57,33 @@ class App extends React.Component {
       this.props.sidebarActive && 'sideloader-active'
     )
     return (
-      <React.Fragment>
+      <>
         <section className={className}>
-          <CV
+          <MDXProvider
             components={{
               a: Link,
               ul: List,
               li: ListItem
             }}
-          />
-          <Readme 
+          >
+            <div>
+              <CV />
+            </div>
+          </MDXProvider>
+          <MDXProvider
             components={{
-              a: Link
+              a: Link,
             }}
-          />
+          >
+            <div>
+              <Readme />
+            </div>
+          </MDXProvider>
         </section>
         <aside>
           <Sideloader />
         </aside>
-      </React.Fragment>
+      </>
     )
   }
 }
