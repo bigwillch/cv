@@ -6,4 +6,4 @@ Extra bits done using [React Measure](https://github.com/souporserious/react-mea
 
 “Cat” loading / fav icon by [Alina Oleynik](https://thenounproject.com/dorxela/) from [the Noun Project](https://thenounproject.com/).
 
-[willhowlett.netlify.com](https://willhowlett.netlify.com/)
+[willhowlett.netlify.app](https://willhowlett.netlify.app)
