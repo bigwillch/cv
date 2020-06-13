@@ -27,7 +27,7 @@ export const SideloaderNav = ({
           tabIndex="0"
           onClick={(e) => {
             e.preventDefault()
-            this.toggleOpen()
+            toggleOpen()
             }
           }
         />

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { sideLoaded, sideClose } from 'Redux/actions/sideloader'
 
-import { SideloaderNav as Nav  } from 'Presentational/SideloaderNav.js'
+import { SideloaderNav } from 'Presentational/SideloaderNav.js'
 
 const mapStateToProps = (state) => {
   return {
@@ -21,27 +21,31 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-let Sideloader = (props) => {
+const Sideloader = ({
+  src,
+  sideLoaded,
+  sideClose,
+  data: {
+    desc,
+  },
+}) => (
+  <>
+    { src &&
+      <>
+      <iframe 
+        src={src}
+        onLoad={sideLoaded}
+      ></iframe>
+      <SideloaderNav 
+        sideClose={sideClose}
+        description={desc}
+      />
+    </>
+    }
+  </>
+)
 
-  return (
-    <React.Fragment>
-      { props.src &&
-        <React.Fragment>
-        <iframe 
-          src={props.src}
-          onLoad={props.sideLoaded}
-        ></iframe>
-        <Nav 
-          sideClose={props.sideClose}
-          description={props.data.desc}
-        />
-      </React.Fragment>
-      }
-    </React.Fragment>
-  )
-}
-
-export default Sideloader = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Sideloader)

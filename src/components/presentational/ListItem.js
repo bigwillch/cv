@@ -1,12 +1,11 @@
 import React from 'react'
 
-let ListItem = (props) => {
-
-  return (
-    <li>
-      <span>{props.children}</span>
-    </li>
-  )
-}
+let ListItem = ({
+  children,
+}) => (
+  <li>
+    <span>{children}</span>
+  </li>
+);
 
 export default ListItem

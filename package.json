@@ -4,7 +4,7 @@
   "description": "hire me",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:lint": "eslint ./src",
     "start": "webpack-dev-server --open --config config/webpack.dev.js --host 0.0.0.0",
     "build": "webpack --config config/webpack.prod.js"
   },
@@ -18,12 +18,16 @@
     "@mdx-js/loader": "^1.6.5",
     "@mdx-js/mdx": "^1.6.5",
     "@mdx-js/react": "^1.6.5",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
     "babel-loader": "^8.1.0",
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.2",
     "css-loader": "^3.5.3",
     "debounce": "^1.2.0",
+    "eslint": "^7.2.0",
+    "eslint-plugin-react": "^7.20.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "node-sass": "^4.14.1",
@@ -44,5 +48,8 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "typescript": "^3.9.5"
   }
 }

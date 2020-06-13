@@ -13,25 +13,31 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-let Link = (props) => {
+const Link = ({
+  children,
+  href: hrefProp,
+  sideTrigger,
+}) => {
+  
+  const componentProps = {};
 
-  switch (props.children) {
+  switch (children) {
     case 'email':
     case 'tel':
-      if (!ENV[props.href]) {
+      // what is ENV for here???
+      if (!ENV[hrefProp]) {
         return null
       } 
-      const componentProps = {};
-      componentProps[props.children] = ENV[props.href]
+      componentProps[children] = ENV[hrefProp]
       return (
-        <Obfuscate className={ props.children } { ...componentProps } />
+        <Obfuscate className={ children } { ...componentProps } />
       )
   }
 
-  // check href to check for example hashtag
-  const href = props.href.split('#'),
+  // check href to check for example hashtag #refactor
+  const href = hrefProp.split('#'),
         sideload = href[1] === 'example' ? true : false,
-        text = sideload ? 'Load example' : props.children,
+        text = sideload ? 'Load example' : children,
         className = classNames(
           sideload && 'button button--forward'
         )
@@ -40,13 +46,14 @@ let Link = (props) => {
     <a 
       href={ href[0] }
       target="_blank"
+      rel="noreferrer"
       className={className}
       // if preview hashtag present trigger sideload action
       onClick={sideload ? (e) => {
         e.preventDefault()
-        props.sideTrigger(
+        sideTrigger(
           href[0],
-          { desc: props.children }
+          { desc: children }
         )
       } : null } 
     >
@@ -55,7 +62,7 @@ let Link = (props) => {
   )
 }
 
-export default Link = connect(
+export default connect(
   null,
   mapDispatchToProps
 )(Link)

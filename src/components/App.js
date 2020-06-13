@@ -10,7 +10,7 @@ import CV from '../CV.md'
 import Readme from '../../README.md'
 
 import Link from 'Containers/Link.js'
-import List from 'Containers/List.js'
+import { List } from 'Containers/List.js'
 import Sideloader from 'Containers/Sideloader.js'
 import ListItem from 'Presentational/ListItem.js'
 
