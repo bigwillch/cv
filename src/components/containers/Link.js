@@ -18,13 +18,15 @@ const Link = ({
   href: hrefProp,
   sideTrigger,
 }) => {
-  
+
   const componentProps = {};
 
+  // contact details need to be set as env vars
+  // CONTACTEMAIL
+  // CONTACTTEL
   switch (children) {
     case 'email':
     case 'tel':
-      // what is ENV for here???
       if (!ENV[hrefProp]) {
         return null
       } 

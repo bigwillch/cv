@@ -22,5 +22,8 @@ module.exports = {
         // "@typescript-eslint"
     ],
     "rules": {
+    },
+    "globals": {
+        "ENV": "readonly"
     }
 };
