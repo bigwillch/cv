@@ -15,11 +15,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const Link = ({
   children,
-  href: hrefProp,
+  href,
   sideTrigger,
 }) => {
-
-  const componentProps = {};
 
   // contact details need to be set as env vars
   // CONTACTEMAIL
@@ -27,18 +25,21 @@ const Link = ({
   switch (children) {
     case 'email':
     case 'tel':
-      if (!ENV[hrefProp]) {
+      if (!ENV[href]) {
         return null
       } 
-      componentProps[children] = ENV[hrefProp]
       return (
-        <Obfuscate className={ children } { ...componentProps } />
+        <Obfuscate
+          className={children}
+          {...{ [children]: ENV[href]} }
+        />
       )
+      default:
   }
 
-  // check href to check for example hashtag #refactor
-  const href = hrefProp.split('#'),
-        sideload = href[1] === 'example' ? true : false,
+  // check href to check for example hashtag
+  const hrefSplit = href.split('#'),
+        sideload = hrefSplit[1] === 'example' ? true : false,
         text = sideload ? 'Load example' : children,
         className = classNames(
           sideload && 'button button--forward'
@@ -46,7 +47,7 @@ const Link = ({
 
   return (
     <a 
-      href={ href[0] }
+      href={ hrefSplit[0] }
       target="_blank"
       rel="noreferrer"
       className={className}
@@ -54,7 +55,7 @@ const Link = ({
       onClick={sideload ? (e) => {
         e.preventDefault()
         sideTrigger(
-          href[0],
+          hrefSplit[0],
           { desc: children }
         )
       } : null } 
