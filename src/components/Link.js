@@ -1,23 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import { sideTrigger } from 'Redux/actions/sideloader'
+import React, { useContext } from 'react'
 
 import Obfuscate from 'react-obfuscate'
-import classNames from 'classnames'
+import classNames from 'classnames';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sideTrigger: (href, data) => {
-      dispatch(sideTrigger(href, data))
-    }
-  }
-}
+import { SideLoaderContext } from 'Contexts';
 
-const Link = ({
+export const Link = ({
   children,
   href,
-  sideTrigger,
 }) => {
+
+  const {
+    actions: {
+      sideTrigger
+    }
+  } = useContext(SideLoaderContext);
 
   // contact details need to be set as env vars
   // CONTACTEMAIL
@@ -64,8 +61,3 @@ const Link = ({
     </a>
   )
 }
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Link)

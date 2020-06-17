@@ -42,7 +42,7 @@ export const List = ({
             ref={measureRef}
             className={className}
             onScroll={state.scrollable
-              ? (e) => debounce(this.checkScroll(measure, contentRect))
+              ? () => debounce(checkScroll(measure, contentRect))
               : null
             }
           >

@@ -1,11 +1,9 @@
 import React from 'react'
 
-let ListItem = ({
+export const ListItem = ({
   children,
 }) => (
   <li>
     <span>{children}</span>
   </li>
 );
-
-export default ListItem

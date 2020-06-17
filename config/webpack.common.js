@@ -66,9 +66,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Containers: path.resolve(__dirname, '../src/components/containers'),
-      Presentational: path.resolve(__dirname, '../src/components/presentational'),
-      Redux: path.resolve(__dirname, '../src/redux'),
+      Components: path.resolve(__dirname, '../src/components'),
+      Contexts: path.resolve(__dirname, '../src/contexts'),
       Styles: path.resolve(__dirname, '../src/styles'),
       Fonts: path.resolve(__dirname, '../src/fonts')
     }
