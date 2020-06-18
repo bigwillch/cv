@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const workboxPlugin = require('workbox-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
@@ -13,7 +13,12 @@ module.exports = merge(common, {
       'process.env.NODE_ENV': '"production"'
     }),
     new FaviconsWebpackPlugin(path.resolve(__dirname, '../src/favicon.png')),
-    new UglifyJSPlugin(),
+    new TerserPlugin({
+      parallel: true,
+      terserOptions: {
+        ecma: 6,
+      },
+    }),
     new CompressionPlugin(),
     new workboxPlugin.GenerateSW({
       swDest: 'sw.js',

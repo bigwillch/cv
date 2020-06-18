@@ -24,6 +24,7 @@ module.exports = {
     "rules": {
     },
     "globals": {
-        "ENV": "readonly"
+        "ENV": "readonly",
+        "__dirname": "readonly",
     }
 };
