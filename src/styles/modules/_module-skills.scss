@@ -6,6 +6,11 @@
   padding-bottom: $gutter + $gutter-half;
   margin-bottom: -$gutter-half;
   position: relative;
+  overflow: auto;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   > li {
     min-width: 110px;
     flex-grow: 1;

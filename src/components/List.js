@@ -11,10 +11,6 @@ export const List = ({
 
   const [scrolled, setScrolled] = useState(false);
 
-  const [clientReady, setClientReady] = useState(false);
-
-  useEffect(() => setClientReady(true), []);
-
   const checkScroll = (measure, contentRect) => {
     measure();
     setScrolled(contentRect.scroll.left > ((contentRect.scroll.width - contentRect.client.width) / 2) ? true : false)
@@ -25,7 +21,7 @@ export const List = ({
     scrolled && 'scrolled'
   )
 
-  if (!clientReady) {
+  if (navigator.userAgent == 'ReactSnap') {
     return (
       <ul>
         {children}

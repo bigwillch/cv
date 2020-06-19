@@ -56,7 +56,7 @@
   "dependencies": {
     "typescript": "^3.9.5"
   },
-  "react-snap": {
+  "reactSnap": {
     "crawl": "false"
   }
 }
