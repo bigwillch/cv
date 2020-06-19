@@ -30,6 +30,9 @@ export const App = () => {
   } = useContext(SideLoaderContext);
 
   useEffect(() => {
+    if (navigator.userAgent !== 'ReactSnap') {
+      htmlClassList.remove('no-js');
+    }
     isMobileSafari &&
     htmlClassList.add('mobileSafari')
   }, []);

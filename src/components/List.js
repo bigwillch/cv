@@ -21,7 +21,7 @@ export const List = ({
     scrolled && 'scrolled'
   )
 
-  if (navigator.userAgent == 'ReactSnap') {
+  if (navigator.userAgent === 'ReactSnap') {
     return (
       <ul>
         {children}

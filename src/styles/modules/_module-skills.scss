@@ -6,7 +6,9 @@
   padding-bottom: $gutter + $gutter-half;
   margin-bottom: -$gutter-half;
   position: relative;
-  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
@@ -43,7 +45,6 @@
   &.scrollable {
     padding-right: 0;
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
     //scroll arrow
     & + span {
       @include arrow($color: $color-link, $position: after);
@@ -63,4 +64,8 @@
       opacity: 0;
     }
   }
+}
+
+html:not(.no-js) &:not(.scrollable) {
+  overflow: visible;
 }
