@@ -10,36 +10,41 @@ _fairly good front end developer_
 
 * javascript
   * ES6
-  * react :heart_eyes:
-  * node
-  * riotjs :unamused:
+  * [react](https://reactjs.org/) :heart_eyes:
+  * ssr
+  * [jest](https://jestjs.io/)
+* node
+  * [express](https://expressjs.com/)
+  * [apollo](https://www.apollographql.com/)
+  * [codeceptJS](https://codecept.io/)
+* APIs
+  * [graphql](https://graphql.org/)
+  * rest
+  * [mocking](https://www.apollographql.com/docs/apollo-server/testing/mocking/)
+  * [swagger](https://swagger.io/)
 * css
   * sass :kissing_smiling_eyes:
-  * smacss :heart:
+  * [smacss](http://smacss.com/) :heart:
   * mobile first
+* architecture
+  * [webpack](https://webpack.js.org/) :sparkling_heart:
+  * [npm](https://www.npmjs.com/)
+  * [docker](https://www.docker.com/)
+  * [grunt](https://gruntjs.com/) :broken_heart:
 * drupal
   * D7/D8
   * theming :muscle:
   * modules :ok_hand:
-* architecture
-  * npm
-  * grunt :broken_heart:
-  * webpack :sparkling_heart:
-  * LAMP :confused:
-* leadership
-  * mentoring :two_men_holding_hands:
-  * training :mortar_board:
-  * dev planning
 * design
   * photoshop :thumbsdown:
   * illustrator :ok_hand:
   * sketch :neutral_face:
   * in browser :thumbsup:
 * other
-  * optimize :boom:
-  * AMP :rage:
-  * APIs
-  * jest :persevere:
+  * [optimize](https://marketingplatform.google.com/intl/en_uk/about/optimize/) :boom:
+  * [AMP](https://developers.google.com/amp) :rage:
+  * mentoring :two_men_holding_hands:
+  * training :mortar_board:
 
 ## Employment
 
@@ -48,13 +53,17 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
+* Integral involvement in migration of legacy Drupal sites to decoupled React / Graphql architecture
+* Implementation of Apollo mock server and associated helper functions to aid concurrent development practices
+* Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
 overseeing adoptation of new technologies
 * Line management and personal development of staff
+* Onboarding of remote team based in Kiev
 * Oversight of transitioning to React from Riot on [buyacar.co.uk](https://www.buyacar.co.uk)
 * Implementation of Google Optimize experiments; including creating 'Optimize Ready' event listener  
 [We had a requirement to change our search API call depending on whether an Optimize experiment was running. _To achieve this I modified Google's page hide snippet to fire an event once Optimize had loaded, and modified our search call to wait for this event.   
-I later turned this functionality into an NPM package (I've no idea if anyone else has used it)_](/examples/optimize#example)
+I later turned this functionality into an NPM package (which no-one has ever used)_](/examples/optimize#example)
 * Oversight and implementation of Front End aspects of Buyacar embeddable widget  
 [This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team who had little javascript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/buyacarwidget#example)
 

@@ -41,6 +41,20 @@
         }
       }
     }
+    a {
+      color: $color-black;
+      &:before {
+        left: 2px;
+        right: 2px;
+        opacity: 0.4;
+      }
+      &:hover {
+        opacity: 0.8;
+        &:before {
+          left: calc(100% - 2px);
+        }
+      }
+    }
   }
   &.scrollable {
     padding-right: 0;

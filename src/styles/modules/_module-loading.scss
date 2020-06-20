@@ -1,4 +1,4 @@
-html {
+html.loading {
   $icon-size: 100px;
   body {
     &:before {
@@ -26,16 +26,6 @@ html {
       content: '';
       display: block;
       position: fixed;
-      opacity: 0;
-      transition: 0.2s opacity;
-      // transition-delay: 0.5s;
-      pointer-events: none;
-    }
-  }
-  &.loading body {
-    &:before, &:after {
-      opacity: 1;
-      pointer-events: auto;
     }
   }
 }
