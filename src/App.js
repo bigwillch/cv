@@ -1,27 +1,25 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 
 import { isMobileSafari } from 'react-device-detect';
-import classNames from 'classnames'
-
-import CV from './CV.md'
-import Readme from '../README.md'
+import classNames from 'classnames';
 
 import {
   Link,
   List,
   ListItem,
   SideLoader,
-} from 'Components'
+} from 'Components';
 import { SideLoaderContext } from 'Contexts';
 
-import fontello from 'Fonts/fontello/config.scss'
-import styles from 'Styles/main.scss'
+import fontello from 'Fonts/fontello/config.scss';
+import styles from 'Styles/main.scss';
+import Readme from '../README.md';
+import CV from './CV.md';
 
-const htmlClassList = document.querySelector('html').classList
+const htmlClassList = document.querySelector('html').classList;
 
 export const App = () => {
-
   const {
     state: {
       loading: sidebarLoading,
@@ -33,15 +31,15 @@ export const App = () => {
     if (navigator.userAgent !== 'ReactSnap') {
       htmlClassList.remove('no-js');
     }
-    isMobileSafari &&
-    htmlClassList.add('mobileSafari')
+    isMobileSafari
+    && htmlClassList.add('mobileSafari');
   }, []);
 
   useEffect(() => {
     if (sidebarActive) {
-      htmlClassList.add('sidebar-active')
+      htmlClassList.add('sidebar-active');
     } else {
-      htmlClassList.remove('sidebar-active')
+      htmlClassList.remove('sidebar-active');
     }
 
     if (sidebarLoading) {
@@ -56,7 +54,7 @@ export const App = () => {
 
   const className = classNames(
     sidebarLoading && 'sideloader-loading',
-    sidebarActive && 'sideloader-active'
+    sidebarActive && 'sideloader-active',
   );
 
   return (
@@ -66,7 +64,7 @@ export const App = () => {
           components={{
             a: Link,
             ul: List,
-            li: ListItem
+            li: ListItem,
           }}
         >
           <div>
@@ -87,5 +85,5 @@ export const App = () => {
         <SideLoader />
       </aside>
     </>
-  )
-}
+  );
+};

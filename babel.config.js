@@ -1,12 +1,11 @@
 module.exports = (api) => {
-  api.cache(true)
+  api.cache(true);
   return {
-    'presets': [
+    presets: [
       '@babel/preset-react',
-      'airbnb',
     ],
-    'plugins': [
+    plugins: [
       '@babel/plugin-proposal-class-properties',
-    ]
-  }
+    ],
+  };
 };

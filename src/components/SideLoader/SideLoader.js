@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 
 import { SideLoaderNav } from 'Components';
 import { SideLoaderContext } from 'Contexts';
 
 export const SideLoader = () => {
-
   const {
     state: {
       href: src,
@@ -15,23 +14,24 @@ export const SideLoader = () => {
     actions: {
       sideLoaded,
       sideClose,
-    }
+    },
   } = useContext(SideLoaderContext);
 
   return (
     <>
-      { src &&
+      { src
+        && (
         <>
-          <iframe 
+          <iframe
             src={src}
             onLoad={sideLoaded}
           />
-          <SideLoaderNav 
+          <SideLoaderNav
             sideClose={sideClose}
             description={desc}
           />
         </>
-      }
+        )}
     </>
-  )
+  );
 };

@@ -3,7 +3,6 @@ import React, { createContext, useState } from 'react';
 export const SideLoaderContext = createContext({});
 
 export const SideLoaderProvider = ({ children }) => {
-
   const [state, setState] = useState({
     href: null,
     loading: false,
@@ -18,14 +17,14 @@ export const SideLoaderProvider = ({ children }) => {
         return setState({
           ...state,
           active: true,
-        })
+        });
       }
       return setState({
         ...state,
         href,
         loading: true,
         data,
-      })
+      });
     },
     sideLoaded: () => setState({
       ...state,
@@ -36,14 +35,15 @@ export const SideLoaderProvider = ({ children }) => {
       ...state,
       active: false,
     }),
-  }
+  };
 
   return (
     <SideLoaderContext.Provider value={{
       state,
       actions,
-    }}>
+    }}
+    >
       { children }
     </SideLoaderContext.Provider>
-  )
-}
+  );
+};
