@@ -6,10 +6,10 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    // "plugin:@typescript-eslint/eslint-recommended",
-    // "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  // "parser": "@typescript-eslint/parser",
+  "parser": "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -19,12 +19,13 @@ module.exports = {
   },
   plugins: [
     'react',
-    // "@typescript-eslint"
+    "@typescript-eslint"
   ],
   rules: {
   },
   globals: {
     ENV: 'readonly',
     __dirname: 'readonly',
+    require: 'readonly',
   },
 };

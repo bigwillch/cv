@@ -12,8 +12,8 @@ import {
 } from 'Components';
 import { SideLoaderContext } from 'Contexts';
 
-import fontello from 'Fonts/fontello/config.scss';
-import styles from 'Styles/main.scss';
+require('Fonts/fontello/config.scss');
+require('Styles/main.scss');
 import Readme from '../README.md';
 import CV from './CV.md';
 

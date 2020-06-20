@@ -12,9 +12,14 @@ module.exports = {
   entry: path.join(__dirname, "../src/index.js"),
   module: {
     rules: [
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   use: "babel-loader",
+      //   exclude: /node_modules/
+      // },
       {
-        test: /\.(js|jsx)$/,
-        use: "babel-loader",
+        test: /\.(t|j)sx?$/,
+        use: { loader: 'ts-loader' },
         exclude: /node_modules/
       },
       {
@@ -61,7 +66,8 @@ module.exports = {
             outputPath: 'fonts/'
           }
         }]
-      }
+      },
+      { enforce: "pre", test: /\.js$/, exclude: /node_modules/, loader: "source-map-loader" }
     ]
   },
   resolve: {
