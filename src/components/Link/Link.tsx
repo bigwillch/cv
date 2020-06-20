@@ -5,7 +5,14 @@ import classNames from 'classnames';
 
 import { SideLoaderContext } from 'Contexts';
 
-export const Link = ({
+declare const ENV: Array<string>;
+
+type Props = {
+  children: string;
+  href: string;
+};
+
+export const Link: React.FC<Props> = ({
   children,
   href,
 }) => {

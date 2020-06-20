@@ -1,8 +1,17 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 
-export const SideLoaderContext = createContext({});
+interface ISideLoaderContext {
+  state: Record<string, unknown>;
+  actions: Record<string, unknown>;
+}
 
-export const SideLoaderProvider = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+export const SideLoaderContext = createContext<ISideLoaderContext>({});
+
+export const SideLoaderProvider: React.FC<Props> = ({ children }) => {
   const [state, setState] = useState({
     href: null,
     loading: false,

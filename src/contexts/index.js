@@ -1,1 +1,1 @@
-export * from './SideLoaderContext';
+export * from './SideLoaderContext.tsx';

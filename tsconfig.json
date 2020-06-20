@@ -7,9 +7,15 @@
     "jsx": "react", // use typescript to transpile jsx to js
     "target": "es5", // specify ECMAScript target version
     "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "paths": {
+      "Components": ["Components"],
+      "Contexts": ["Contexts"],
+    }
   },
   "include": [
-    "./src/"
+    "./src/",
+    "decs.d.ts"
   ]
 }
