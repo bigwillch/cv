@@ -54,7 +54,8 @@ _Digital Publishing_
 > Front End Team Lead *(Jan 2017 - present)*
 
 * Integral involvement in migration of legacy Drupal sites to decoupled React / Graphql architecture
-* Implementation of Apollo mock server and associated helper functions to aid concurrent development practices
+* Implementation of Apollo mock server and associated helper functions to aid concurrent development practices  
+[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team who had little javascript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/mocking#example)
 * Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
 overseeing adoptation of new technologies

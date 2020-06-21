@@ -1,0 +1,251 @@
+<html>
+<head>
+  <title>Optimize Ready</title>
+  <style>
+    @font-face {
+      font-family: 'Abel';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Abel Regular'), local('Abel-Regular'), url(https://fonts.gstatic.com/s/abel/v8/MwQ5bhbm2POE2V9BPbh5uGM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    body, pre {
+      font-family: 'Abel', sans-serif;
+      margin: 0;
+    }
+    main > div {
+      padding: 0 1em;
+    }
+    main > div:first-child {
+      background: #f5f5f5;
+    }
+    @media only screen and (min-width: 740px) {
+      main {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      main > div {
+        width: 50%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/atelier-forest-dark.min.css">
+</head>
+
+<body>
+
+  
+<main>
+<div>
+  <h1>Documentation example</h1>
+  <h2>Installing and running the server...</h2>
+  <p>checkout the repo and cd into the <code>mock-server</code> folder</p>
+  <pre><code>yarn; yarn start
+  </code></pre>
+    <h2>Structure</h2>
+    <p>Uses the schema.graphql definition from the main content-api to create mock content for development / testing.</p>
+    <p>This mock server is created using Apollo Server's <a
+        href="https://www.apollographql.com/docs/apollo-server/features/mocking.html" rel="nofollow">mocking
+        functionality</a>. The mock data is defined inside the mock folder</p>
+    <p>The mocking definition files use the <a href="https://github.com/boo1ean/casual#readme">casual</a> package to
+      generate useful mock data (any fields that do not use casual will generate a basic response based on the type of
+      field defined, e.g. <code>String</code>)</p>
+    <h2>Specifying response structure</h2>
+    <p>Some responses can be controlled by using specific urls and query parameters</p>
+    <h3>Content Type</h3>
+    <p>To mock a specific content type visit <code>/article</code>, <code>/review</code> etc.</p>
+    <p>See the <code>getContentTypeFromUrl</code> function in the RequestResponse
+      mock file for full list of available urls</p>
+    <h3>Content Blocks</h3>
+    <p>To control what content blocks are returned on a specific content type page append the query param
+      <code>?contentBlocks</code> to the url with the value <code>&lt;CONTENTBLOCKTYPE&gt;*&lt;NUMBEROFITEMS&gt;</code>
+      concatenated with the <code>+</code> sign</p>
+    <p><strong>E.G.</strong></p>
+    <pre><code>/article?contentBlocks=TextBlock*4+ImageBlock*2+IndexBlock+HeaderBlock+TextBlock*5
+  </code></pre>
+    <p>The above will return <em>4 Text Blocks, 2 Image blocks, 1 Index block, 1 Header block and 5 Text blocks</em></p>
+    <p>n.b. for the above to work on sites the <code>ALLOW_API_PARAMS</code> environment var must be set to
+      <code>true</code> for Coreweb to pass the params to the mock server</p>
+    <h4>Content Block Arguments</h4>
+    <p>Certain content blocks have been configured so that they can accept arguments in a JSON structure. Examples are
+      below</p>
+    <p><strong>TextBlock</strong></p>
+    <ul>
+      <li>
+        <p><code>wordCount</code></p>
+        <pre><code>/article?contentBlocks=TextBlock({"wordCount":200})*4
+  </code></pre>
+        <p>Visiting the above in a siteapp using the mock server will return 4 textblocks with 200 words each</p>
+        <p><em>(n.b. if using in a graphql query directly you will need to escape the <code>"</code> characters, e.g.
+            <code>TextBlock({\"wordCount\":200})</code>)</em></p>
+      </li>
+    </ul>
+    <h3>Global Settings</h3>
+    <p>For any sites using the <code>getSettings(url: $url)</code> query (<em>including the url param</em>) any of the
+      results can be overriden by passing the <code>getSettings</code> param a JSON string. Any items specified in the
+      string will be overridden (the rest will be mocked as usual)</p>
+    <p>e.g.</p>
+    <pre><code> /article?getSettings={"adSettings":{"beforeInlineDesktopAds":100,"betweenInlineDesktopAds":40}}
+  </code></pre>
+    <p>Will override the <code>beforeInlineDesktopAds</code> and <code>betweenInlineDesktopAds</code> values from the mock
+      server</p>
+    <p>When used in conjunction with the ContentBlock arguments above we will be able to mock the ad injection logic (and
+      automate tests for it)</p>
+    <p>e.g.</p>
+    <pre><code>/article?contentBlocks=TextBlock({"wordCount":50})*4&amp;getSettings={"adSettings":{"beforeInlineDesktopAds":0,"betweenInlineDesktopAds":40}}
+  </code></pre>
+</div>
+
+<div>
+
+  <h1>Code example</h1>
+
+  <pre><code class="lang-js">
+import casual from 'casual';
+import { MockList } from 'graphql-tools';
+import { Image } from './Media';
+import oembeds from './oembeds.json';
+
+export const blocks = {
+  TextBlock: (args = {}) => {
+    const {
+      wordCount = casual.integer(50, 150),
+    } = args;
+    return {
+      type: 'TEXT',
+      data: JSON.stringify(`<p>${casual.words(wordCount)} <em>(paragraph wordcount: ${wordCount})</em></p>`),
+      wordCount,
+    }
+  },
+  HeaderBlock: () => ({
+    type: 'HEADER',
+    data: JSON.stringify({
+      size: casual.integer(1, 6),
+      text: casual.title,
+    }),
+  }),
+  ImageBlock: () => ({
+    type: 'IMAGE',
+    data: JSON.stringify(Image()),
+  }),
+  RelatedBlock: () => ({
+    type: 'RELATED_CONTENT',
+    data: JSON.stringify([
+      {
+        label: casual.title,
+        url: `/article/mock/${casual.word}`,
+      },
+      {
+        label: casual.title,
+        url: `/article/mock/${casual.word}`,
+      },
+    ]),
+  }),
+  FeaturedRelatedBlock: () => ({
+    type: 'FEATURED_RELATED_CONTENT',
+    data: JSON.stringify([
+      {
+        title: casual.title,
+        subtitle: casual.string,
+        ctaUrl: `/article/mock/${casual.word}`,
+        ctaText: casual.word,
+      },
+    ]),
+  }),
+  JSONBlock: () => ({
+    type: 'JSON',
+    data: JSON.stringify(casual.card_data),
+  }),
+  SocialBlock: () => ({
+    type: 'SOCIAL_EMBED',
+    data: JSON.stringify(casual.random_element(oembeds)),
+  }),
+  IndexBlock: () => ({
+    type: 'RELATED',
+    title: casual.title,
+    items: (root, { limit = 4 }) => new MockList(limit),
+  }),
+  DataBlock: () => ({
+    wordCount: 0,
+    ...casual.random_value({
+      HeaderBlock: blocks.HeaderBlock,
+      TextBlock: blocks.TextBlock,
+      ImageBlock: blocks.ImageBlock,
+      JSONBlock: blocks.JSONBlock,
+      SocialBlock: blocks.SocialBlock,
+      RelatedBlock: blocks.RelatedBlock,
+      FeaturedRelatedBlock: blocks.FeaturedRelatedBlock,
+    })()
+  }),
+  ItemBlock: () => ({
+    itemType: casual.random_element(['GALLERY_LINKED', 'GALLERY_SLIDESHOW']),
+    item: {
+      __typename: 'Gallery',
+    },
+  }),
+}
+
+const prepareBlock = (
+  data = casual.random_value(blocks),
+  args = {},
+) => {
+  let typename = data.name;
+  if (typename !== 'IndexBlock' && typename !== 'ItemBlock') {
+    typename = 'DataBlock';
+  }
+  return {
+    ...data(args),
+    typename,
+    __typename: typename,
+  };
+}
+
+export const ContentBlock = () => prepareBlock();
+
+const splitItem = item => {
+  const itemSplit = item.split('*');
+  const count = parseInt(itemSplit[1] ? parseInt(itemSplit[1]) : 1);
+  const args = item.substring(
+    item.lastIndexOf("(") + 1,
+    item.lastIndexOf(")")
+  );
+  const type = itemSplit[0].split('(')[0];
+  return {
+    type,
+    count,
+    args: args && JSON.parse(args),
+  }
+}
+
+export const contentBlockRenderer = (contentBlocks) => {
+  const blockArray = [];
+
+  contentBlocks.split(' ').forEach(item => {
+
+    const {
+      type,
+      count,
+      args
+    } = splitItem(item);
+    
+    if (blocks[type]) {
+      for (var i = 0; i < count; i++)
+        blockArray.push(prepareBlock(blocks[type], args));
+    }
+  });
+  return blockArray;
+}
+  </code></pre>
+</div>
+
+</main>
+
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</html>
