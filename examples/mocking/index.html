@@ -181,7 +181,7 @@ export const blocks = {
     })()
   }),
   ItemBlock: () => ({
-    itemType: casual.random_element(['GALLERY_LINKED', 'GALLERY_SLIDESHOW']),
+    itemType: casual.random_element(['LINKED', 'SLIDESHOW']),
     item: {
       __typename: 'Gallery',
     },

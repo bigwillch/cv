@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import classNames from 'classnames';
 
@@ -15,6 +15,26 @@ export const SideLoaderNav = ({
   const toggleOpen = () => {
     setOpen(!open);
   };
+
+  const keyDown = ({ key }) => {
+    switch (key) {
+      case 'Escape':
+      case 'ArrowLeft':
+        return sideClose();
+      case 'ArrowUp':
+        return setOpen(true);
+      case 'ArrowDown':
+        return setOpen(false);
+      default:
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyDown, false);
+    return () => {
+      document.removeEventListener('keydown', keyDown, false);
+    };
+  }, []);
 
   return (
     <div className={className}>

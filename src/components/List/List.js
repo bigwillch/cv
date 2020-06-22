@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Measure from 'react-measure';
 import debounce from 'debounce';
 import classNames from 'classnames';
