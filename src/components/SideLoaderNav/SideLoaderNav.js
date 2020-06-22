@@ -20,7 +20,9 @@ export const SideLoaderNav = ({
     switch (key) {
       case 'Escape':
       case 'ArrowLeft':
-        return sideClose();
+        setOpen(false);
+        sideClose();
+        return;
       case 'ArrowUp':
         return setOpen(true);
       case 'ArrowDown':

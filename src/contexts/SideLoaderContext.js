@@ -4,19 +4,20 @@ export const SideLoaderContext = createContext({});
 
 export const SideLoaderProvider = ({ children }) => {
 
-  const [currentHref, setCurrentHref] = useState(null);
   const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(false);
-  const [data, setData] = useState({});
+  const [currentData, setData] = useState({
+    href: null,
+    desc: null,
+  });
 
   const actions = {
-    sideTrigger: (href, data) => {
+    sideTrigger: (data) => {
       // if current link already loaded open straight away
-      if (currentHref === href) {
+      if (currentData.href === data.href) {
         return setActive(true);
       }
       setLoading(true);
-      setCurrentHref(href);
       setData(data);
       return;
     },
@@ -31,10 +32,9 @@ export const SideLoaderProvider = ({ children }) => {
   return (
     <SideLoaderContext.Provider value={{
       state: {
-        href: currentHref,
         loading,
         active,
-        data,
+        ...currentData,
       },
       actions,
     }}

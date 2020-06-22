@@ -50,10 +50,10 @@ export const Link = ({
       // if preview hashtag present trigger sideload action
       onClick={sideload ? (e) => {
         e.preventDefault();
-        sideTrigger(
-          hrefSplit[0],
-          { desc: children },
-        );
+        sideTrigger({
+          href: hrefSplit[0],
+          desc: children,
+        });
       } : null}
     >
       { text }

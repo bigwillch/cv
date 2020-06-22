@@ -6,10 +6,8 @@ import { SideLoaderContext } from 'Contexts';
 export const SideLoader = () => {
   const {
     state: {
-      href: src,
-      data: {
-        desc,
-      },
+      href,
+      desc,
     },
     actions: {
       sideLoaded,
@@ -19,11 +17,11 @@ export const SideLoader = () => {
 
   return (
     <>
-      { src
+      { href
         && (
         <>
           <iframe
-            src={src}
+            src={href}
             onLoad={sideLoaded}
           />
           <SideLoaderNav
