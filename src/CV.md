@@ -14,13 +14,13 @@ _fairly good front end developer_
   * ssr
   * [jest](https://jestjs.io/)
 * node
-  * [express](https://expressjs.com/)
+  * [express](https://expressjs.com/) :smiley_cat:
   * [apollo](https://www.apollographql.com/)
   * [codeceptJS](https://codecept.io/)
 * APIs
   * [graphql](https://graphql.org/)
   * rest
-  * [mocking](https://www.apollographql.com/docs/apollo-server/testing/mocking/)
+  * [mocking](https://www.apollographql.com/docs/apollo-server/testing/mocking/) :kissing_heart:
   * [swagger](https://swagger.io/)
 * css
   * sass :kissing_smiling_eyes:
@@ -57,8 +57,9 @@ _Digital Publishing_
 * Implementation of Apollo mock server and associated helper functions to aid concurrent development practices  
 [Examples of using Apollo Mock Server to aid development and automate testing _A core part of the platform's business requirements is the ability to inject various elements (ads etc) inbetween content blocks. Without the ability to specify what mocked data was returned developers struggled to add new elements and we weren't able to release confidently due to inability to run automated tests against the logic.  
 I implemented functionality to allow us to control this mock data (mainly during Zoom conference calls, while still concentrating on the meeting obviously :innocent:) which had very positive feedback from developers and which allowed the QA team to incorporate the functionality into their testing_](/examples/mocking#example)
-* Rules engine
-* Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites
+* Initial setup of rules engine to inject ads etc. in article content
+* Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites  
+[CodeceptJS example _Description_](/examples/codeceptjs#example)
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
 overseeing adoptation of new technologies
 * Line management and personal development of staff

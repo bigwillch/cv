@@ -1,0 +1,385 @@
+<html>
+<head>
+  <title>CodeceptJS Examples</title>
+  <style>
+    @font-face {
+      font-family: 'Abel';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Abel Regular'), local('Abel-Regular'), url(https://fonts.gstatic.com/s/abel/v8/MwQ5bhbm2POE2V9BPbh5uGM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    body, pre {
+      font-family: 'Abel', sans-serif;
+      margin: 0;
+    }
+    main > div {
+      padding: 0 1em;
+    }
+    main > div:first-child {
+      background: #f5f5f5;
+    }
+    @media only screen and (min-width: 740px) {
+      main {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      main > div {
+        width: 50%;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/atelier-forest-dark.min.css">
+</head>
+
+<body>
+
+  
+<main>
+<div>
+  <h1>Documentation example</h1>
+
+  <p>Tools for running user tests against our siteapps</p>
+  <h2>Usage</h2>
+  <h3>Extra config</h3>
+  <p>Default <a href="https://codecept.io/configuration/" rel="nofollow">codecept config</a> can be overriden like so
+  </p>
+  <pre><code class="lang-js">
+    const runTests = require('@dennisdigital/polaris-e2etesting');
+    
+    runTests({
+      extraConfig: {
+        helpers: {
+          TestCafe: {
+            browser: 'safari',
+          },
+        },
+        gherkin: {
+          steps: [
+            './e2e_tests/step_definitions/steps.js',
+          ],
+        },
+      },
+    });
+  </code></pre>
+
+  <p>extraConfig will be merged with default config and override any already defined options. This allows adding extra site specific step definitions to the <code>gherkin.steps</code> array</p>
+  <h3>Override URL</h3>
+  <p>By default a local server will be spun up running the local sitecode (this assumes the code has been compiled,
+    using either <code>yarn build</code> or <code>yarn watch</code>).</p>
+  <p>If you wish to use a specific url instead this can be overridden by passing the <code>baseUrl</code> parameter. In
+    this case the local server won't run, instead the tests will just run against the url specified</p>
+  <pre><code class="lang-js">
+    const runTests = require('@dennisdigital/polaris-e2etesting');
+    
+    runTests({
+      baseUrl: 'https://example.com',
+    });
+  </code></pre>
+  <h3>Arguments</h3>
+  <p>Arguments can be passed to the package.json script like so: <code>yarn test:e2e --dev</code></p>
+  <ul>
+    <li><code>yarn test:e2e --dev</code> - shows browser when running tests</li>
+    <li><code>yarn test:e2e --include="@homepage @smoke"</code> - includes the specified tags</li>
+    <li><code>yarn test:e2e --exclude="@homepage @smoke"</code> - excludes the specified tags</li>
+  </ul>
+  <h2>Development</h2>
+  <p>To develop against <code>polaris-e2etesting</code> from within a siteapp do the following:</p>
+  <ul>
+    <li>Clone both the <code>polaris-e2etesting</code> repo and the siteapp repo into their respective folders</li>
+    <li>In <code>polaris-e2etesting</code> run <code>yarn link</code>. This will allow it to be symlinked in other
+      projects</li>
+    <li>In <code>polaris-siteapp</code> run <code>yarn</code> to install dependencies, then run
+      <code>yarn link polaris-e2etesting</code>. This means that <code>polaris-siteapp</code> will now use your local
+      copy of <code>polaris-e2etesting</code> instead of the copy in its node_modules folder, allowing you to develop
+      against it</li>
+    <li>Run <code>yarn test:e2e</code> in <code>polaris-siteapp</code> to start your local version of the test runner
+    </li>
+  </ul>
+  <h2>Site Level Setup</h2>
+  <ol>
+    <li>
+      <p><code>yarn add -D dennisinteractive/polaris-e2etesting </code></p>
+    </li>
+    <li>
+      <p>Create <code>e2e_tests</code> folder with following structure:</p>
+    </li>
+  </ol>
+  <p>
+    <pre><code>mkdir e2e_tests e2e_tests/features e2e_tests/tests e2e_tests/output e2e_tests/screenshots &amp;&amp; touch e2e_tests/output/.gitignore &amp;&amp; echo '*\n!.gitignore' &gt; e2e_tests/output/.gitignore</code></pre>
+  </p>
+  <pre><code>e2e_tests
+│
+└───features
+│   │   bddtest1.feature
+│   │   bddtest2.feature
+│   
+└───tests
+│   │   test1.test.js
+│   │   test2.test.js
+│   
+└───output
+└───screenshots
+</code></pre>
+  <ol start="3">
+    <li>Create <code>runTests.js</code> file</li>
+  </ol>
+  <pre><code class="lang-js">
+    const runTests = require('@dennisdigital/polaris-e2etesting');
+    runTests();
+  </code></pre>
+
+  <ol start="4">
+    <li>
+      <p>Add <code>"test:e2e": "node ./runTests.js"</code> to your package.json scripts section</p>
+    </li>
+    <li>
+      <p>Update the site's Dockerfile (<code>docker/Dockerfile</code>) to include the following after
+        <code>ARG BUILD_COMMAND</code></p>
+    </li>
+  </ol>
+  <pre><code># Install dependencies for running Puppeteer
+# https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    &amp;&amp; sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google.list' \
+    &amp;&amp; apt-get update \
+    &amp;&amp; apt-get install -y google-chrome-unstable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf \
+      --no-install-recommends \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre>
+  <ol start="6">
+    <li>Ensure the siteapp's webpack config does not include the <code>Dotenv</code> plugin for the server bundle (it
+      should still be used for the client bundle)</li>
+  </ol>
+  <h3>Step autocompletion (using VS Code)</h3>
+  <ul>
+    <li>Install the Cucumber Autocomplete extension from the marketplace (<a
+        href="https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete"
+        rel="nofollow">https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete</a>)</li>
+    <li>Hit <code>Cmd-Shift-P</code> and type `Preferences: Open Settings (JSON)</li>
+    <li>Add the following to your preferences (make sure to add a comma after the last existing preference)</li>
+  </ul>
+  <pre><code>    "cucumberautocomplete.steps": [
+      "node_modules/@dennisdigital/polaris-e2etesting/step_definitions/steps.js",
+    ],
+    "cucumberautocomplete.syncfeatures": "e2e_tests/features/**/*feature",
+    "cucumberautocomplete.strictGherkinCompletion": true
+</code></pre>
+  <ul>
+    <li>Restart VS Code</li>
+    <li>You should now be able to see our custom steps autocompleted for you in the site level feature files</li>
+  </ul>
+</div>
+
+<div>
+
+  <h1>Code example</h1>
+
+  <pre><code class="lang-js">
+    let Container = require('codeceptjs').container;
+    let Codecept = require('codeceptjs').codecept;
+    const event = require('codeceptjs').event;
+    const path = require('path');
+    const { spawn } = require('child_process');
+    const merge = require('deepmerge');
+    const parseArgs = require('minimist');
+    const fp = require('find-free-port');
+    const codeceptConfig = require('./codecept.conf.js').config;
+    
+    const appDir = path.dirname(require.main.filename);
+    
+    /**
+    * @param {String} include space separated tags
+    * @param {String} exclude space separated tags
+    * @returns {String} regex as per https://codecept.io/advanced/#tags
+    */
+    const tagGrep = (include, exclude) => {
+      if (!include && !exclude) return '(?=.*)^(?!.*@exclude)';
+      const includeGrep = include ? include.split(' ').map(tag => `(?=.*${tag})`).join('') : '(?=.*)';
+      const excludeGrep = exclude ? '^' + exclude.split(' ').map(tag => `(?!.*${tag})`).join('') : '';
+      return includeGrep + excludeGrep;
+    }
+    
+    module.exports = (options = {}) => {
+      
+      const {
+        baseUrl,
+        extraConfig = {},
+        siteConfig
+      } = options;
+      
+      const {
+        dev,
+        include,
+        exclude,
+      } = parseArgs(process.argv);
+      
+      const codeceptInit = (config, opts) => {
+        
+        // create runner
+        let codecept = new Codecept(config, opts);
+        
+        // initialize codeceptjs in current dir
+        codecept.initGlobals(appDir);
+        
+        // create helpers, support files, mocha
+        Container.create(config, opts);
+        
+        // initialize listeners
+        codecept.runHooks();
+        
+        // run bootstrap function from config
+        codecept.runBootstrap((err) => {
+          
+          // load tests
+          codecept.loadTests(config.tests);
+          codecept.loadTests(config.gherkin.features);
+          
+          // run tests
+          codecept.run();
+        });
+      }
+      
+      const startServerAndRunTests = (port, config, opts) => {
+        let testsRunning = false;
+        let testsFailed = false;
+        
+        const server = spawn('yarn', ['server'], {
+          env: merge(process.env, {
+            PORT: port,
+            API_URL: 'https://mock.develop.coreapp.didev.co.uk',
+            ALLOW_API_PARAMS: true,
+          }),
+        });
+        
+        const killServer = () => {
+          process.kill(server.pid);
+          if (testsFailed) process.exit(1);
+          process.exit(0);
+        }
+        
+        // kill server after any other teardown steps
+        const teardown = config.teardown
+        ? () => {
+          config.teardown();
+          killServer();
+        } : () => killServer();
+        
+        server.stdout.on('data', (data) => {
+          console.log('\x1b[36m%s\x1b[0m', `e2e test server output:\n${data}`);
+          // seems hacky, but want to check server is running before starting tests
+          if (data.toString().includes(`http://localhost:${port}`) && !testsRunning) {
+            testsRunning = true;
+            codeceptInit(merge(config, { teardown }), opts);
+          }
+        });
+        
+        event.dispatcher.on(event.test.failed, () => {
+          testsFailed = true;
+        });
+      }
+      
+      const init = () => {
+        fp(3100).then(([port]) => {
+          const config = merge(
+            codeceptConfig(
+              baseUrl || `http://localhost:${port}`,
+              dev,
+              siteConfig,
+              tagGrep(include, exclude),
+              ),
+              extraConfig
+              );
+              let opts = { steps: true };
+              
+              // if baseurl is provided dont't start the server, just run tests
+              if (baseUrl) return codeceptInit(config, opts);
+              
+              return startServerAndRunTests(port, config, opts);
+              
+            }).catch((err) => {
+              console.error(err);
+            });
+          }
+          
+          return init();
+        }
+      </code></pre>
+      <pre><code class="lang-js">
+        const pomPath = `${__dirname}/pageObjectModel`
+
+        exports.config = (
+          baseUrl,
+          dev = false,
+          siteConfig = {},
+          grep = '(?=.*)^(?!.*@exclude)',
+        ) => ({
+          output: './e2e_tests/output',
+          tests: './e2e_tests/tests/**/*.test.js',
+          grep,
+          helpers: {
+            Puppeteer: {
+              url: baseUrl,
+              show: dev,
+              windowSize: '1200x800',
+              chrome: {
+                args: [
+                  '--no-sandbox',
+                ],
+              },
+            },
+            ResembleHelper: {
+              require: 'codeceptjs-resemblehelper',
+              screenshotFolder: './e2e_tests/output/',
+              baseFolder: './e2e_tests/screenshots/base/',
+              diffFolder: './e2e_tests/output/',
+            },
+            SiteConfigHelper: {
+              require: __dirname + '/helpers/SiteHelper',
+              siteConfig,
+            }
+          },
+          include: {
+            I: `${pomPath}/steps_file.js`,
+            Base: `${pomPath}/base`,
+            Page: `${pomPath}/pages/page/index`,
+            ArticlePage: `${pomPath}/pages/article/index`,
+            ReviewPage: `${pomPath}/pages/review/index`,
+            IndexPage: `${pomPath}/pages/index/index`,
+            GalleryPage: `${pomPath}/pages/gallery/index`,
+            Advert: `${pomPath}/fragments/advert/index`,
+            ArticleGroup: `${pomPath}/fragments/articleGroup/index`,
+            Taboola: `${pomPath}/fragments/articleGroup/index`,
+            Footer: `${pomPath}/fragments/footer/index`,
+            'Sticky Footer': `${pomPath}/fragments/stickyFooter/index`,
+          },
+          mocha: {},
+          bootstrap: null,
+          teardown: null,
+          hooks: [],
+          gherkin: {
+            features: './e2e_tests/features/**/*.feature',
+            steps: [
+              __dirname + '/step_definitions/steps.js',
+            ],
+          },
+          plugins: {
+            screenshotOnFail: {
+              enabled: true,
+            },
+          },
+        });        
+      </code></pre>
+    </div>
+    
+  </main>
+  
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</html>
