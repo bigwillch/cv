@@ -59,7 +59,9 @@ _Digital Publishing_
 I implemented functionality to allow us to control this mock data (mainly during Zoom conference calls, while still concentrating on the meeting obviously :innocent:) which had very positive feedback from developers and which allowed the QA team to incorporate the functionality into their testing_](/examples/mocking#example)
 * Initial setup of rules engine to inject ads etc. in article content
 * Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites  
-[CodeceptJS example _Description_](/examples/codeceptjs#example)
+[Automated test runner example _One of the biggest challenges we faced in putting together a decoupled architecture was how to run automated end user tests during deployment and have an environment to run against.  
+I created a package that (deep breath) spun up Puppeteer under CodeceptJS inside Docker, which allowed us to run Gherkin tests against the FE codebase being deployed using data from our mock server :dizzy_face:.  
+I was pleased that this system was adopted happily by our QA engineer (who was initially sceptical about CodeceptJS as he was unfmiliar with it and felt more comfortable with Selenium) in order to implement a Page Object Model pattern and add proper end user testing_](/examples/codeceptjs#example)
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
 overseeing adoptation of new technologies
 * Line management and personal development of staff

@@ -45,7 +45,7 @@
   <p>Tools for running user tests against our siteapps</p>
   <h2>Usage</h2>
   <h3>Extra config</h3>
-  <p>Default <a href="https://codecept.io/configuration/" rel="nofollow">codecept config</a> can be overriden like so
+  <p>Default <a href="https://codecept.io/configuration/" rel="nofollow" target="_blank">codecept config</a> can be overriden like so
   </p>
   <pre><code class="lang-js">
     const runTests = require('@dennisdigital/polaris-e2etesting');
@@ -102,7 +102,7 @@
   <h2>Site Level Setup</h2>
   <ol>
     <li>
-      <p><code>yarn add -D dennisinteractive/polaris-e2etesting </code></p>
+      <p><code>Install the e2etesting package with yarn</code></p>
     </li>
     <li>
       <p>Create <code>e2e_tests</code> folder with following structure:</p>
@@ -158,7 +158,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   <ul>
     <li>Install the Cucumber Autocomplete extension from the marketplace (<a
         href="https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete"
-        rel="nofollow">https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete</a>)</li>
+        rel="nofollow" target="_blank">https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete</a>)</li>
     <li>Hit <code>Cmd-Shift-P</code> and type `Preferences: Open Settings (JSON)</li>
     <li>Add the following to your preferences (make sure to add a comma after the last existing preference)</li>
   </ul>
@@ -177,6 +177,8 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 <div>
 
   <h1>Code example</h1>
+
+  <h2>Test Runner</h2>
 
   <pre><code class="lang-js">
     let Container = require('codeceptjs').container;
@@ -290,92 +292,89 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
               dev,
               siteConfig,
               tagGrep(include, exclude),
-              ),
-              extraConfig
-              );
-              let opts = { steps: true };
-              
-              // if baseurl is provided dont't start the server, just run tests
-              if (baseUrl) return codeceptInit(config, opts);
-              
-              return startServerAndRunTests(port, config, opts);
-              
-            }).catch((err) => {
-              console.error(err);
-            });
-          }
-          
-          return init();
-        }
-      </code></pre>
-      <pre><code class="lang-js">
-        const pomPath = `${__dirname}/pageObjectModel`
+            ),
+            extraConfig
+          );
+          let opts = { steps: true };
 
-        exports.config = (
-          baseUrl,
-          dev = false,
-          siteConfig = {},
-          grep = '(?=.*)^(?!.*@exclude)',
-        ) => ({
-          output: './e2e_tests/output',
-          tests: './e2e_tests/tests/**/*.test.js',
-          grep,
-          helpers: {
-            Puppeteer: {
-              url: baseUrl,
-              show: dev,
-              windowSize: '1200x800',
-              chrome: {
-                args: [
-                  '--no-sandbox',
-                ],
-              },
-            },
-            ResembleHelper: {
-              require: 'codeceptjs-resemblehelper',
-              screenshotFolder: './e2e_tests/output/',
-              baseFolder: './e2e_tests/screenshots/base/',
-              diffFolder: './e2e_tests/output/',
-            },
-            SiteConfigHelper: {
-              require: __dirname + '/helpers/SiteHelper',
-              siteConfig,
-            }
-          },
-          include: {
-            I: `${pomPath}/steps_file.js`,
-            Base: `${pomPath}/base`,
-            Page: `${pomPath}/pages/page/index`,
-            ArticlePage: `${pomPath}/pages/article/index`,
-            ReviewPage: `${pomPath}/pages/review/index`,
-            IndexPage: `${pomPath}/pages/index/index`,
-            GalleryPage: `${pomPath}/pages/gallery/index`,
-            Advert: `${pomPath}/fragments/advert/index`,
-            ArticleGroup: `${pomPath}/fragments/articleGroup/index`,
-            Taboola: `${pomPath}/fragments/articleGroup/index`,
-            Footer: `${pomPath}/fragments/footer/index`,
-            'Sticky Footer': `${pomPath}/fragments/stickyFooter/index`,
-          },
-          mocha: {},
-          bootstrap: null,
-          teardown: null,
-          hooks: [],
-          gherkin: {
-            features: './e2e_tests/features/**/*.feature',
-            steps: [
-              __dirname + '/step_definitions/steps.js',
+          // if baseurl is provided dont't start the server, just run tests
+          if (baseUrl) return codeceptInit(config, opts);
+
+          return startServerAndRunTests(port, config, opts);
+
+        }).catch((err) => {
+          console.error(err);
+        });
+      }
+          
+      return init();
+    }
+  </code></pre>
+
+  <h2>CodeceptJS Config</h2>
+
+  <pre><code class="lang-js">
+    const pomPath = `${__dirname}/pageObjectModel`
+
+    exports.config = (
+      baseUrl,
+      dev = false,
+      siteConfig = {},
+      grep = '(?=.*)^(?!.*@exclude)',
+    ) => ({
+      output: './e2e_tests/output',
+      tests: './e2e_tests/tests/**/*.test.js',
+      grep,
+      helpers: {
+        Puppeteer: {
+          url: baseUrl,
+          show: dev,
+          windowSize: '1200x800',
+          chrome: {
+            args: [
+              '--no-sandbox',
             ],
           },
-          plugins: {
-            screenshotOnFail: {
-              enabled: true,
-            },
-          },
-        });        
-      </code></pre>
-    </div>
+        },
+        ResembleHelper: {
+          require: 'codeceptjs-resemblehelper',
+          screenshotFolder: './e2e_tests/output/',
+          baseFolder: './e2e_tests/screenshots/base/',
+          diffFolder: './e2e_tests/output/',
+        },
+        SiteConfigHelper: {
+          require: __dirname + '/helpers/SiteHelper',
+          siteConfig,
+        }
+      },
+      include: {
+        I: `${pomPath}/steps_file.js`,
+        Base: `${pomPath}/base`,
+        Page: `${pomPath}/pages/page/index`,
+        ArticlePage: `${pomPath}/pages/article/index`,
+        ReviewPage: `${pomPath}/pages/review/index`,
+        IndexPage: `${pomPath}/pages/index/index`,
+      },
+      mocha: {},
+      bootstrap: null,
+      teardown: null,
+      hooks: [],
+      gherkin: {
+        features: './e2e_tests/features/**/*.feature',
+        steps: [
+          __dirname + '/step_definitions/steps.js',
+        ],
+      },
+      plugins: {
+        screenshotOnFail: {
+          enabled: true,
+        },
+      },
+    });      
+  </code></pre>
+</div>
     
-  </main>
+</main>
   
 </body>
 
