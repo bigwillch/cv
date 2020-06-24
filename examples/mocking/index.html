@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Optimize Ready</title>
+  <title>Apollo Mocking Examples</title>
   <style>
     @font-face {
       font-family: 'Abel';
@@ -41,11 +41,6 @@
 <main>
 <div>
   <h1>Documentation example</h1>
-  <h2>Installing and running the server...</h2>
-  <p>checkout the repo and cd into the <code>mock-server</code> folder</p>
-  <pre><code>yarn; yarn start
-  </code></pre>
-    <h2>Structure</h2>
     <p>Uses the schema.graphql definition from the main content-api to create mock content for development / testing.</p>
     <p>This mock server is created using Apollo Server's <a
         href="https://www.apollographql.com/docs/apollo-server/features/mocking.html" rel="nofollow">mocking
@@ -64,9 +59,9 @@
       <code>?contentBlocks</code> to the url with the value <code>&lt;CONTENTBLOCKTYPE&gt;*&lt;NUMBEROFITEMS&gt;</code>
       concatenated with the <code>+</code> sign</p>
     <p><strong>E.G.</strong></p>
-    <pre><code>/article?contentBlocks=TextBlock*4+ImageBlock*2+IndexBlock+HeaderBlock+TextBlock*5
+    <pre><code>/article?contentBlocks=TextBlock*4+ImageBlock*2+HeaderBlock+TextBlock*5
   </code></pre>
-    <p>The above will return <em>4 Text Blocks, 2 Image blocks, 1 Index block, 1 Header block and 5 Text blocks</em></p>
+    <p>The above will return <em>4 Text Blocks, 2 Image blocks, 1 Header block and 5 Text blocks</em></p>
     <p>n.b. for the above to work on sites the <code>ALLOW_API_PARAMS</code> environment var must be set to
       <code>true</code> for Coreweb to pass the params to the mock server</p>
     <h4>Content Block Arguments</h4>
@@ -103,142 +98,140 @@
 
   <h1>Code example</h1>
 
+  <h2>ContentBlocks Mock Resolver</h2>
+
   <pre><code class="lang-js">
-import casual from 'casual';
-import { MockList } from 'graphql-tools';
-import { Image } from './Media';
-import oembeds from './oembeds.json';
+    import { parseUrl } from 'query-string';
+    import { contentBlockRenderer } from './ContentBlocks';
 
-export const blocks = {
-  TextBlock: (args = {}) => {
-    const {
-      wordCount = casual.integer(50, 150),
-    } = args;
-    return {
-      type: 'TEXT',
-      data: JSON.stringify(`<p>${casual.words(wordCount)} <em>(paragraph wordcount: ${wordCount})</em></p>`),
-      wordCount,
-    }
-  },
-  HeaderBlock: () => ({
-    type: 'HEADER',
-    data: JSON.stringify({
-      size: casual.integer(1, 6),
-      text: casual.title,
-    }),
-  }),
-  ImageBlock: () => ({
-    type: 'IMAGE',
-    data: JSON.stringify(Image()),
-  }),
-  RelatedBlock: () => ({
-    type: 'RELATED_CONTENT',
-    data: JSON.stringify([
-      {
-        label: casual.title,
-        url: `/article/mock/${casual.word}`,
+    const ContentEntity = () => ({
+      body: (args) => {
+        if (args.url) {
+          const {
+            query = {},
+          } = parseUrl(args.url);
+          const {
+            contentBlocks,
+          } = query;
+          if (contentBlocks) {
+            return contentBlockRenderer(contentBlocks);
+          }
+        }
+        return new MockList([8, 20]);
       },
-      {
-        label: casual.title,
-        url: `/article/mock/${casual.word}`,
-      },
-    ]),
-  }),
-  FeaturedRelatedBlock: () => ({
-    type: 'FEATURED_RELATED_CONTENT',
-    data: JSON.stringify([
-      {
-        title: casual.title,
-        subtitle: casual.string,
-        ctaUrl: `/article/mock/${casual.word}`,
-        ctaText: casual.word,
-      },
-    ]),
-  }),
-  JSONBlock: () => ({
-    type: 'JSON',
-    data: JSON.stringify(casual.card_data),
-  }),
-  SocialBlock: () => ({
-    type: 'SOCIAL_EMBED',
-    data: JSON.stringify(casual.random_element(oembeds)),
-  }),
-  IndexBlock: () => ({
-    type: 'RELATED',
-    title: casual.title,
-    items: (root, { limit = 4 }) => new MockList(limit),
-  }),
-  DataBlock: () => ({
-    wordCount: 0,
-    ...casual.random_value({
-      HeaderBlock: blocks.HeaderBlock,
-      TextBlock: blocks.TextBlock,
-      ImageBlock: blocks.ImageBlock,
-      JSONBlock: blocks.JSONBlock,
-      SocialBlock: blocks.SocialBlock,
-      RelatedBlock: blocks.RelatedBlock,
-      FeaturedRelatedBlock: blocks.FeaturedRelatedBlock,
-    })()
-  }),
-  ItemBlock: () => ({
-    itemType: casual.random_element(['LINKED', 'SLIDESHOW']),
-    item: {
-      __typename: 'Gallery',
-    },
-  }),
-}
-
-const prepareBlock = (
-  data = casual.random_value(blocks),
-  args = {},
-) => {
-  let typename = data.name;
-  if (typename !== 'IndexBlock' && typename !== 'ItemBlock') {
-    typename = 'DataBlock';
-  }
-  return {
-    ...data(args),
-    typename,
-    __typename: typename,
-  };
-}
-
-export const ContentBlock = () => prepareBlock();
-
-const splitItem = item => {
-  const itemSplit = item.split('*');
-  const count = parseInt(itemSplit[1] ? parseInt(itemSplit[1]) : 1);
-  const args = item.substring(
-    item.lastIndexOf("(") + 1,
-    item.lastIndexOf(")")
-  );
-  const type = itemSplit[0].split('(')[0];
-  return {
-    type,
-    count,
-    args: args && JSON.parse(args),
-  }
-}
-
-export const contentBlockRenderer = (contentBlocks) => {
-  const blockArray = [];
-
-  contentBlocks.split(' ').forEach(item => {
-
-    const {
-      type,
-      count,
-      args
-    } = splitItem(item);
-    
-    if (blocks[type]) {
-      for (var i = 0; i < count; i++)
-        blockArray.push(prepareBlock(blocks[type], args));
-    }
-  });
-  return blockArray;
-}
+    );
   </code></pre>
+
+  <h2>ContentBlocks Mocking Logic</h2>
+
+  <pre><code class="lang-js">
+    import casual from 'casual';
+    import { MockList } from 'graphql-tools';
+    import { Image } from './Media';
+
+    export const blocks = {
+      TextBlock: (args = {}) => {
+        const {
+          wordCount = casual.integer(50, 150),
+        } = args;
+        return {
+          type: 'TEXT',
+          data: JSON.stringify(`<p>${casual.words(wordCount)} <em>(paragraph wordcount: ${wordCount})</em></p>`),
+          wordCount,
+        }
+      },
+      HeaderBlock: () => ({
+        type: 'HEADER',
+        data: JSON.stringify({
+          size: casual.integer(1, 6),
+          text: casual.title,
+        }),
+      }),
+      ImageBlock: () => ({
+        type: 'IMAGE',
+        data: JSON.stringify(Image()),
+      }),
+    }
+
+    const prepareBlock = (
+      data = casual.random_value(blocks),
+      args = {},
+    ) => {
+      const typename = data.name;
+      return {
+        ...data(args),
+        typename,
+        __typename: typename,
+      };
+    }
+
+    export const ContentBlock = () => prepareBlock();
+
+    const splitItem = item => {
+      const itemSplit = item.split('*');
+      const count = parseInt(itemSplit[1] ? parseInt(itemSplit[1]) : 1);
+      const args = item.substring(
+        item.lastIndexOf("(") + 1,
+        item.lastIndexOf(")")
+      );
+      const type = itemSplit[0].split('(')[0];
+      return {
+        type,
+        count,
+        args: args && JSON.parse(args),
+      }
+    }
+
+    export const contentBlockRenderer = (contentBlocks) => {
+      const blockArray = [];
+
+      contentBlocks.split(' ').forEach(item => {
+
+        const {
+          type,
+          count,
+          args
+        } = splitItem(item);
+        
+        if (blocks[type]) {
+          for (var i = 0; i < count; i++)
+            blockArray.push(prepareBlock(blocks[type], args));
+        }
+      });
+      return blockArray;
+    }
+  </code></pre>
+
+  <h2>GlobalSettings Mock Resolver</h2>
+
+  <pre><code class="lang-js">
+
+    import merge from 'lodash.merge';
+
+    export const GlobalSettings = (_, args = {}) => {
+    
+      const defaultSettings = {
+        adSettings: {
+          beforeInlineDesktopAds: 50,
+          betweenInlineDesktopAds: 20,
+        },
+      }
+      if (args.url) {
+        const {
+          query = {},
+        } = parseUrl(args.url);
+        const {
+          getSettings,
+        } = query;
+        if (getSettings) {
+          return merge(defaultSettings, JSON.parse(getSettings));
+        }
+      }
+      return defaultSettings
+    };
+  </code></pre>
+
+
 </div>
 
 </main>

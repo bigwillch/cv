@@ -33,9 +33,6 @@ export const SideLoaderNav = ({
 
   useEffect(() => {
     document.addEventListener('keydown', keyDown, false);
-    return () => {
-      document.removeEventListener('keydown', keyDown, false);
-    };
   }, []);
 
   return (
