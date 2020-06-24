@@ -50,10 +50,6 @@
       field defined, e.g. <code>String</code>)</p>
     <h2>Specifying response structure</h2>
     <p>Some responses can be controlled by using specific urls and query parameters</p>
-    <h3>Content Type</h3>
-    <p>To mock a specific content type visit <code>/article</code>, <code>/review</code> etc.</p>
-    <p>See the <code>getContentTypeFromUrl</code> function in the RequestResponse
-      mock file for full list of available urls</p>
     <h3>Content Blocks</h3>
     <p>To control what content blocks are returned on a specific content type page append the query param
       <code>?contentBlocks</code> to the url with the value <code>&lt;CONTENTBLOCKTYPE&gt;*&lt;NUMBEROFITEMS&gt;</code>
@@ -62,8 +58,6 @@
     <pre><code>/article?contentBlocks=TextBlock*4+ImageBlock*2+HeaderBlock+TextBlock*5
   </code></pre>
     <p>The above will return <em>4 Text Blocks, 2 Image blocks, 1 Header block and 5 Text blocks</em></p>
-    <p>n.b. for the above to work on sites the <code>ALLOW_API_PARAMS</code> environment var must be set to
-      <code>true</code> for Coreweb to pass the params to the mock server</p>
     <h4>Content Block Arguments</h4>
     <p>Certain content blocks have been configured so that they can accept arguments in a JSON structure. Examples are
       below</p>

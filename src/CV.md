@@ -55,7 +55,9 @@ _Digital Publishing_
 
 * Integral involvement in migration of legacy Drupal sites to decoupled React / Graphql architecture
 * Implementation of Apollo mock server and associated helper functions to aid concurrent development practices  
-[This widget is used across the business's other automotive websites to drive traffic to Buyacar from related vehicle reviews :car::moneybag: _The Front End side was built by myself and a junior member of the team who had little javascript experience. The developer picked up the concepts of building DOM elements from a JSON object well (and is no longer a junior dev, woo! :beers::cocktail::beers::cocktail:)_](/examples/mocking#example)
+[Examples of using Apollo Mock Server to aid development and automate testing _A core part of the platform's business requirements is the ability to inject various elements (ads etc) inbetween content blocks. Without the ability to specify what mocked data was returned developers struggled to add new elements and we weren't able to release confidently due to inability to run automated tests against the logic.  
+I implemented functionality to allow us to control this mock data (mainly during Zoom conference calls, while still concentrating on the meeting obviously :innocent:) which had very positive feedback from developers and which allowed the QA team to incorporate the functionality into their testing_](/examples/mocking#example)
+* Rules engine
 * Creation of automated testing tooling using CodeceptJS / Puppeteer for use by developers and QA technicians across portfolio of sites
 * First point of call for queries and guidance on techniques / processes within team, with a focus on
 overseeing adoptation of new technologies
