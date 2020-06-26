@@ -1,5 +1,6 @@
 module.exports = {
   setupFiles: [
-    './config/jest.setup.js'
+    './config/jest.setup.js',
+    'jest-useragent-mock'
   ]
 };
