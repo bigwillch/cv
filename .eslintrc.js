@@ -24,4 +24,7 @@ module.exports = {
     ENV: 'readonly',
     __dirname: 'readonly',
   },
+  ignorePatterns: [
+    '*.test.js'
+  ]
 };

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List should be scrollable if viewport is narrow 1`] = `
+<List>
+  <mockConstructor
+    client={true}
+    onResize={[Function]}
+    scroll={true}
+  >
+    <ul
+      className="scrollable"
+      onScroll={[Function]}
+    >
+      <li>
+        Item 1
+      </li>
+      <li>
+        Item 2
+      </li>
+      <li>
+        Item 3
+      </li>
+    </ul>
+    <span>
+      scroll me
+    </span>
+  </mockConstructor>
+</List>
+`;
