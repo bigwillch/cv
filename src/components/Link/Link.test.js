@@ -61,6 +61,10 @@ describe('Link', () => {
     onClick({ preventDefault: jest.fn });
 
     expect(sideTriggerSpy).toHaveBeenCalledTimes(1);
+    expect(sideTriggerSpy).toHaveBeenCalledWith({
+      desc: 'Example description',
+      href: '/examples/page',
+    });
 
   });
 
