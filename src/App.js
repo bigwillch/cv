@@ -12,7 +12,9 @@ import {
 } from 'Components';
 import { SideLoaderContext } from 'Contexts';
 
+/* eslint-disable-next-line no-unused-vars */
 import fontello from 'Fonts/fontello/config.scss';
+/* eslint-disable-next-line no-unused-vars */
 import styles from 'Styles/main.scss';
 import Readme from '../README.md';
 import CV from './CV.md';

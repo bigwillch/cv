@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 
 export const ListItem = ({
   children,
@@ -7,3 +8,7 @@ export const ListItem = ({
     <span>{children}</span>
   </li>
 );
+
+ListItem.propTypes = {
+  children: PropTypes.element.isRequired,
+};

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-
+import PropTypes from 'prop-types'; 
 import Obfuscate from 'react-obfuscate';
 import classNames from 'classnames';
 
@@ -59,4 +59,9 @@ export const Link = ({
       { text }
     </a>
   );
+};
+
+Link.propTypes = {
+  children: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };

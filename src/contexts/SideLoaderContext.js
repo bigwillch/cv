@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import PropTypes from 'prop-types'; 
 
 export const SideLoaderContext = createContext({});
 
@@ -42,4 +43,8 @@ export const SideLoaderProvider = ({ children }) => {
       { children }
     </SideLoaderContext.Provider>
   );
+};
+
+SideLoaderProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };

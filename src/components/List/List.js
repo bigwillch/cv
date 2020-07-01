@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'; 
 import Measure from 'react-measure';
 import debounce from 'debounce';
 import classNames from 'classnames';
@@ -51,4 +52,8 @@ export const List = ({
       )}
     </Measure>
   );
+};
+
+List.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
