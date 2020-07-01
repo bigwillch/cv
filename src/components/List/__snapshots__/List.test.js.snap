@@ -2,13 +2,100 @@
 
 exports[`List should be scrollable if viewport is narrow 1`] = `
 <List>
+  <Measure
+    client={true}
+    onResize={[Function]}
+    scroll={true}
+  >
+    <Component
+      client={true}
+      contentRect={
+        Object {
+          "bounds": Object {},
+          "client": Object {},
+          "entry": Object {},
+          "margin": Object {},
+          "offset": Object {},
+          "scroll": Object {},
+        }
+      }
+      measure={[Function]}
+      measureRef={[Function]}
+      scroll={true}
+    >
+      <ul
+        className="scrollable"
+        onScroll={[Function]}
+      >
+        <li>
+          Item 1
+        </li>
+        <li>
+          Item 2
+        </li>
+        <li>
+          Item 3
+        </li>
+      </ul>
+      <span>
+        scroll me
+      </span>
+    </Component>
+  </Measure>
+</List>
+`;
+
+exports[`List should not be scrollable if viewport is wide 1`] = `
+<List>
+  <Measure
+    client={true}
+    onResize={[Function]}
+    scroll={true}
+  >
+    <Component
+      client={true}
+      contentRect={
+        Object {
+          "bounds": Object {},
+          "client": Object {},
+          "entry": Object {},
+          "margin": Object {},
+          "offset": Object {},
+          "scroll": Object {},
+        }
+      }
+      measure={[Function]}
+      measureRef={[Function]}
+      scroll={true}
+    >
+      <ul
+        className=""
+        onScroll={null}
+      >
+        <li>
+          Item 1
+        </li>
+        <li>
+          Item 2
+        </li>
+        <li>
+          Item 3
+        </li>
+      </ul>
+    </Component>
+  </Measure>
+</List>
+`;
+
+exports[`List should register when scrolled 1`] = `
+<List>
   <mockConstructor
     client={true}
     onResize={[Function]}
     scroll={true}
   >
     <ul
-      className="scrollable"
+      className="scrollable scrolled"
       onScroll={[Function]}
     >
       <li>

@@ -1,19 +1,21 @@
 import React from 'react';
-import * as Measure from 'react-measure';
-// const Measure = jest.requireActual('react-measure');
+import { act } from 'react-dom/test-utils';
+import Measure, * as CJSMeasure from 'react-measure';
 import toJson from 'enzyme-to-json';
 import { clear, mockUserAgent } from 'jest-useragent-mock'
 import { List } from './List';
 
-// jest.mock('react-measure');
-
-// jest.mock('react-measure', () => () => <span>MultiSelect</span>)
+const createMeasureSpy = (contentRect) => jest
+  .spyOn(CJSMeasure, 'default')
+  .mockImplementation(
+    ({ children }) => children({
+      measure: jest.fn(),
+      measureRef: null,
+      contentRect,
+    })
+  );
 
 describe('List', () => {
-
-  // beforeEach(() => {
-  //   jest.resetModules();
-  // });
 
   afterEach(() => {
     clear();
@@ -35,7 +37,7 @@ describe('List', () => {
 
   it('should be wrapped in Measure if not pre-rendered', () => {
     const wrapper = mount(ExampleList);
-    expect(wrapper.first().childAt(0).type()).toEqual(Measure.default);
+    expect(wrapper.first().childAt(0).type()).toEqual(Measure);
     expect(wrapper.find(Measure).find(ExampleList));
   });
 
@@ -51,29 +53,71 @@ describe('List', () => {
       }
     };
 
-    const measureSpy = jest
-      .spyOn(Measure, 'default')
-      .mockImplementation(
-        ({ children }) => (
-          <>
-          {
-            children({
-              measure: jest.fn(),
-              measureRef: null,
-              contentRect,
-            })
-          }
-          </>
-        )
-      );
+    const wrapper = mount(ExampleList);
+    const onResize = wrapper.find(Measure).prop('onResize');
+
+    act(() => onResize(contentRect));
+    wrapper.update();
+    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find('ul').hasClass('scrollable')).toEqual(true);
+    expect(typeof wrapper.find('ul').prop('onScroll')).toEqual('function');
+    expect(wrapper.find('ul + span').text()).toEqual('scroll me');
+  });
+
+  it('should not be scrollable if viewport is wide', () => {
+
+    const contentRect = {
+      scroll: {
+        left: 0,
+        width: 200,
+      },
+      client: {
+        width: 300,
+      }
+    };
 
     const wrapper = mount(ExampleList);
+    const onResize = wrapper.find(Measure).prop('onResize');
+
+    act(() => onResize(contentRect));
+    wrapper.update();
+    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.find('ul').hasClass('scrollable')).toEqual(false);
+    expect(wrapper.find('ul').prop('onScroll')).toEqual(null);
+    expect(wrapper.find('ul + span').exists()).toEqual(false);
+  });
+
+  it('should register when scrolled', () => {
+
+    const contentRect = {
+      scroll: {
+        left: 150,
+        width: 200,
+      },
+      client: {
+        width: 100,
+      }
+    };
+
+    const measureSpy = createMeasureSpy(contentRect);
+    const wrapper = mount(ExampleList);
+
     const onResize = wrapper.find(measureSpy).prop('onResize');
-    onResize(contentRect);
+    act(() => {
+      onResize(contentRect);
+    });
+    wrapper.update();
+    
+    const onScroll = wrapper.find('ul').prop('onScroll');
+    act(() => {
+      onScroll();
+    });
     wrapper.update();
 
     expect(toJson(wrapper)).toMatchSnapshot();
-
-    measureSpy.mockRestore();
+    expect(wrapper.find('ul').hasClass('scrolled')).toEqual(true);
+    expect(wrapper.find('ul + span').text()).toEqual('scroll me');
   });
+
+
 });
