@@ -2,7 +2,7 @@
 
 exports[`SideLoader should render empty if no href is set in context state 1`] = `<SideLoader />`;
 
-exports[`SideLoader should render iframe and nav i,f href is set in context state 1`] = `
+exports[`SideLoader should render iframe and nav if href is set in context state 1`] = `
 <SideLoader>
   <iframe
     onLoad={[MockFunction]}

@@ -28,7 +28,7 @@ describe('SideLoader', () => {
     expect(wrapper.childAt(0).exists()).toEqual(false);
   });
 
-  it('should render iframe and nav i,f href is set in context state', () => {
+  it('should render iframe and nav if href is set in context state', () => {
     const wrapper = createSideLoaderWrapper({
       ...sideLoaderContextValue,
       state: {

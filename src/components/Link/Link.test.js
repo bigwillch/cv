@@ -6,7 +6,7 @@ import Obfuscate from 'react-obfuscate';
 
 const sideLoaderContextValue = {
   actions: {
-    sideTrigger: jest.fn,
+    sideTrigger: jest.fn(),
   }
 }
 
@@ -50,7 +50,11 @@ describe('Link', () => {
 
   it('should trigger sideloader when clicked for hashtagged example links', () => {
 
-    const sideTriggerSpy = jest.spyOn(sideLoaderContextValue.actions, 'sideTrigger');
+    const {
+      actions: {
+        sideTrigger,
+      }
+    } = sideLoaderContextValue;
 
     const wrapper = createLinkWrapper({
       href: '/examples/page#example',
@@ -60,8 +64,8 @@ describe('Link', () => {
 
     onClick({ preventDefault: jest.fn });
 
-    expect(sideTriggerSpy).toHaveBeenCalledTimes(1);
-    expect(sideTriggerSpy).toHaveBeenCalledWith({
+    expect(sideTrigger).toHaveBeenCalledTimes(1);
+    expect(sideTrigger).toHaveBeenCalledWith({
       desc: 'Example description',
       href: '/examples/page',
     });
