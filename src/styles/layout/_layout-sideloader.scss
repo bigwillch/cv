@@ -8,6 +8,7 @@ main {
     height: 100%;
     transition: 0.4s right;
     background: $color-white;
+    overflow: hidden;
     iframe {
       width: 100%;
       height: calc(100% - #{$sideloader-nav-height});
