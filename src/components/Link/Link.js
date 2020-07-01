@@ -33,7 +33,7 @@ export const Link = ({
     default:
   }
 
-  // check href to check for example hashtag
+  // check href for example hashtag
   const hrefSplit = href.split('#');
   const sideload = hrefSplit[1] === 'example';
   const text = sideload ? 'Load example' : children;

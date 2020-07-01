@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should render external links 1`] = `
+<SideLoaderProvider>
+  <Link
+    href="//www.google.com"
+  >
+    <a
+      className=""
+      href="//www.google.com"
+      onClick={null}
+      rel="noreferrer"
+      target="_blank"
+    >
+      Basic Link
+    </a>
+  </Link>
+</SideLoaderProvider>
+`;
+
+exports[`Link should render hashtagged example links 1`] = `
+<SideLoaderProvider>
+  <Link
+    href="/examples/page#example"
+  >
+    <a
+      className="button button--forward"
+      href="/examples/page"
+      onClick={[Function]}
+      rel="noreferrer"
+      target="_blank"
+    >
+      Load example
+    </a>
+  </Link>
+</SideLoaderProvider>
+`;
