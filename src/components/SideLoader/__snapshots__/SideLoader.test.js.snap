@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideLoader should render empty if no href is set in context state 1`] = `<SideLoader />`;
+
+exports[`SideLoader should render iframe and nav i,f href is set in context state 1`] = `
+<SideLoader>
+  <iframe
+    onLoad={[MockFunction]}
+    src="examples/document"
+  />
+  <SideLoaderNav
+    description="Description"
+    sideClose={[MockFunction]}
+  >
+    <div
+      className=""
+    >
+      <nav>
+        <div
+          className="button button--back button--chunky"
+          onClick={[MockFunction]}
+          role="button"
+          tabIndex="0"
+        >
+          Back
+        </div>
+        <div
+          className="button button--up toggle"
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        />
+      </nav>
+      <p>
+        Description
+      </p>
+    </div>
+  </SideLoaderNav>
+</SideLoader>
+`;
