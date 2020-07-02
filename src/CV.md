@@ -143,5 +143,5 @@ I seem to always achieve the most when I put in the least amount of effort and t
 ## Extracurricular
 
 ```
-punk / comics / cats / video games / lego / radio / cooking / films / penge
+punk / comics / cats / video games / lego / radio / films / penge / neverending list of diy jobs
 ```
