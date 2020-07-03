@@ -78,8 +78,7 @@ I later turned this functionality into an NPM package (which no-one has ever use
 I made several layout mixins whilst working on this page (full-width-elem, equal-rows) which are now used by team members across a number of sites (and which could probably do with improving to be honest)_](/examples/alphr#example)
 * Responsible for maintenance and enhancement of Front End areas of Drupal distro, including implementation of modular [SMACSS](https://smacss.com/) architecture across portfolio
 * Creation of proof of concept "Sticky Interscroller" ad format to be pitched to clients  
-[This proof of concept was made in collaboration with one of our Product Managers who wanted to find a way to improve advert viewability. _So far I've not found a way to deal with the slight jerkiness caused by iOS's buggy position:fixed; implementation. This upsets me greatly :crying_cat_face:  
-To my knowledge we've not actually sold any of these formats but it was fun to make_](/examples/stickyinterscroller#example)
+[This proof of concept was made in collaboration with one of our Product Managers who wanted to find a way to improve advert viewability. _To my knowledge we've not actually sold any of these formats but it was fun to make_](/examples/stickyinterscroller#example)
 * Line of contact between Front End and Back End teams
 
 ### The Gallery Partnership

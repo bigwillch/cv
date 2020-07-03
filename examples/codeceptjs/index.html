@@ -154,24 +154,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     <li>Ensure the siteapp's webpack config does not include the <code>Dotenv</code> plugin for the server bundle (it
       should still be used for the client bundle)</li>
   </ol>
-  <h3>Step autocompletion (using VS Code)</h3>
-  <ul>
-    <li>Install the Cucumber Autocomplete extension from the marketplace (<a
-        href="https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete"
-        rel="nofollow" target="_blank">https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete</a>)</li>
-    <li>Hit <code>Cmd-Shift-P</code> and type `Preferences: Open Settings (JSON)</li>
-    <li>Add the following to your preferences (make sure to add a comma after the last existing preference)</li>
-  </ul>
-  <pre><code>    "cucumberautocomplete.steps": [
-      "node_modules/@dennisdigital/polaris-e2etesting/step_definitions/steps.js",
-    ],
-    "cucumberautocomplete.syncfeatures": "e2e_tests/features/**/*feature",
-    "cucumberautocomplete.strictGherkinCompletion": true
-</code></pre>
-  <ul>
-    <li>Restart VS Code</li>
-    <li>You should now be able to see our custom steps autocompleted for you in the site level feature files</li>
-  </ul>
 </div>
 
 <div>
