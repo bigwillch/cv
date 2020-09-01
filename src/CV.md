@@ -53,7 +53,7 @@ _Digital Publishing_
 
 > Front End Team Lead *(Jan 2017 - present)*
 
-* Integral involvement in migration of legacy Drupal sites to decoupled React / Graphql architecture
+* Integral involvement in front end aspects of migration of legacy Drupal sites to decoupled React / Graphql architecture
 * Implementation of Apollo mock server and associated helper functions to aid concurrent development practices  
 [Mocking _I implemented functionality to allow us to control mock data (mainly during Zoom conference calls, while still concentrating on the meeting obviously :innocent:) which had very positive feedback from developers and which allowed the QA team to incorporate the functionality into their testing_](/examples/mocking#example)
 * Initial setup of rules engine to inject ads etc. in article content
