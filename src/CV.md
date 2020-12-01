@@ -48,10 +48,15 @@ _fairly good front end developer_
 
 ## Employment
 
+### Holland and Barrett
+_Digital Retail_
+
+> Front End Developer *(Dec 2020 - present)*
+
 ### Dennis
 _Digital Publishing_
 
-> Front End Team Lead *(Jan 2017 - present)*
+> Front End Team Lead *(Jan 2017 - Dec 2020)*
 
 * Integral involvement in front end aspects of migration of legacy Drupal sites to decoupled React / Graphql architecture
 * Implementation of Apollo mock server and associated helper functions to aid concurrent development practices  
