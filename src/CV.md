@@ -48,7 +48,7 @@ _fairly good front end developer_
 
 ## Employment
 
-### Holland and Barrett
+### Holland & Barrett
 _Digital Retail_
 
 > Front End Developer *(Dec 2020 - present)*
